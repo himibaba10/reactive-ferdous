@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&display=swap");
+
+* {
+  @apply font-inter;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+::selection {
+  @apply bg-secondary text-primary;
+}
+
+html,
+a,
+button,
+a:hover,
+button:hover {
+  cursor: url(./assets/custom cursor.png), auto;
+}
+
+html {
+  @apply overflow-x-hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-primary via-secondary to-primary;
+}
+
+body {
+  @apply bg-primary text-white;
+}
+
+.section {
+  @apply mx-auto max-w-7xl px-2.5 md:px-5 lg:px-10;
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-[rgba(55,15,123,1)] to-[rgba(57,124,254,1)];
+}
