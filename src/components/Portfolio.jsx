@@ -1,20 +1,85 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../ui/Heading";
 import { ProjectImages } from "./ProjectImages";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Portfolio = () => {
+  const [activeTab, setActiveTab] = useState("All");
+  const [allProjects, setAllProjects] = useState([]);
+  const [categories, setCategories] = useState(["All"]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "projects"));
+        const projectsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        
+        // Extract unique categories
+        const uniqueCategories = [
+          "All",
+          ...new Set(projectsData.map((p) => p.category).filter(Boolean)),
+        ];
+
+        setAllProjects(projectsData);
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  const filteredProjects =
+    activeTab === "All"
+      ? allProjects
+      : allProjects.filter((project) => project.category === activeTab);
+
   return (
     <section
       id="portfolio"
-      className="section flex flex-col md:flex-row items-center gap-8 md:gap-16 my-20"
+      className="section flex flex-col items-center my-20 w-full"
     >
-      <div className="w-full md:w-[45%]">
-        <Heading className="text-5xl sm:text-7xl">
+      <div className="w-full text-center flex flex-col items-center">
+        <Heading className="text-5xl sm:text-7xl mb-10">
           The works closest to my heart
         </Heading>
+        
+        {/* Tabs */}
+        {!loading && categories.length > 1 && (
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveTab(category)}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-transparent ${
+                  activeTab === category
+                    ? "bg-black text-white dark:bg-white dark:text-black shadow-md scale-105"
+                    : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 hover:border-zinc-300 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="w-full md:w-[55%]">
-        <ProjectImages />
+      
+      <div className="w-full">
+        {loading ? (
+          <div className="flex justify-center items-center min-h-[200px]">
+            <p className="text-xl text-zinc-500 animate-pulse">Loading projects...</p>
+          </div>
+        ) : (
+          <ProjectImages projects={filteredProjects} />
+        )}
       </div>
     </section>
   );

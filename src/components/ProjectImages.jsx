@@ -1,119 +1,72 @@
-import { useState } from "react";
-import project1Img from "../assets/project-1.png";
-import project2Img from "../assets/project-2.png";
-import project3Img from "../assets/project-3.png";
-import project4Img from "../assets/project-4.png";
-
-export const ProjectImages = () => {
-  const [isOpen, setIsOpen] = useState(0);
-  const toggle = ({ currentIdx }) =>
-    setIsOpen((prevIdx) => (prevIdx == currentIdx ? 0 : currentIdx));
-  const sliders = [
-    {
-      img: project1Img,
-      title: "FH Cafe",
-      technologies: [
-        "React",
-        "ContextApi",
-        "Tanstack Query",
-        "Express",
-        "MongoDB",
-        "JWT",
-      ],
-      live: "https://eleventh-assignment-b4b1e.web.app/",
-      frontendCodeLink: "https://github.com/himibaba10/fh-cafe-client",
-      backendCodeLink: "https://github.com/himibaba10/fh-cafe-server",
-    },
-    {
-      img: project2Img,
-      title: "Contest HUB",
-      technologies: [
-        "React",
-        "ContextApi",
-        "Tanstack Query",
-        "Express",
-        "MongoDB",
-        "Dashboard",
-        "JWT",
-      ],
-      live: "https://twelfth-assignment-82598.web.app/",
-      frontendCodeLink:
-        "https://github.com/himibaba10/twelfth-assignment-client",
-      backendCodeLink:
-        "https://github.com/himibaba10/twelfth-assignment-server",
-    },
-    {
-      img: project3Img,
-      title: "Finsweet",
-      technologies: ["HTML", "CSS"],
-      live: "https://himibaba10.github.io/own-website7",
-      frontendCodeLink: "https://github.com/himibaba10/own-website7",
-    },
-    {
-      img: project4Img,
-      title: "Mobile Shop",
-      technologies: ["React", "ContextApi", "Tailwind", "Express", "MongoDB"],
-      live: "https://earnest-frangollo-46f67e.netlify.app",
-      frontendCodeLink: "https://github.com/himibaba10/tenth-assignment-client",
-      backendCodeLink: "https://github.com/himibaba10/tenth-assignment-server",
-    },
-  ];
+export const ProjectImages = ({ projects }) => {
+  if (!projects || projects.length === 0) {
+    return (
+      <div className="flex justify-center items-center w-full min-h-[200px]">
+        <p className="text-xl text-zinc-500">No projects found in this category.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 justify-end">
-      {/* map  */}
-      {sliders.map((slide, idx) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((slide, idx) => (
         <div
-          onClick={() => toggle({ currentIdx: idx })}
-          className={`rounded-xl md:h-[600px] relative duration-500 ease-in-out overflow-hidden ${
-            isOpen == idx
-              ? "w-full h-[400px] md:w-[400px] "
-              : "w-full md:w-[80px] h-[80px]"
-          }`}
-          key={idx}
+          className="bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col group border border-zinc-100 dark:border-zinc-800"
+          key={slide.id || idx}
         >
-          {/* main image  */}
-          <img
-            className="h-full object-cover rounded-lg w-full md:w-full object-top hover:object-[0_100%] transition-all duration-[2s]"
-            src={slide.img}
-            alt=""
-          />
-          <div
-            className={`text-white bg-black w-full absolute left-0 bottom-0 p-2 ${
-              isOpen == idx ? "block " : "hidden"
-            }`}
-          >
-            <div>
+          {/* main image wrapper */}
+          <div className="h-[250px] overflow-hidden relative">
+            <img
+              className="w-full h-full object-cover object-top group-hover:object-[0_100%] transition-all duration-[3s] ease-in-out"
+              src={slide.img}
+              alt={slide.title}
+            />
+          </div>
+          
+          {/* content */}
+          <div className="p-6 flex flex-col flex-grow">
+            <a 
+              href={slide.live} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-2xl font-bold hover:text-blue-500 dark:hover:text-blue-400 transition-colors mb-4 inline-block"
+            >
+              {slide.title} ↗
+            </a>
+            
+            <div className="flex flex-wrap gap-2 mb-6">
               {slide.technologies?.map((tech) => (
-                <p
+                <span
                   key={tech}
-                  className="inline-block bg-white mx-1 text-black p-2 text-sm m-1 rounded"
+                  className="bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 px-3 py-1 text-xs font-semibold rounded-full"
                 >
                   {tech}
-                </p>
+                </span>
               ))}
             </div>
-            <div className="my-2">
-              <a
-                href={slide.frontendCodeLink}
-                target="_blank"
-                className="underline mr-3"
-              >
-                Frontend Code
-              </a>
+            
+            <div className="mt-auto pt-4 border-t border-zinc-200 dark:border-zinc-800 flex gap-4 text-sm font-medium">
+              {slide.frontendCodeLink && (
+                <a
+                  href={slide.frontendCodeLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline"
+                >
+                  Frontend Code
+                </a>
+              )}
               {slide.backendCodeLink && (
                 <a
                   href={slide.backendCodeLink}
                   target="_blank"
-                  className="underline"
+                  rel="noreferrer"
+                  className="text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline"
                 >
                   Backend Code
                 </a>
               )}
             </div>
-            <a href={slide.live} target="_blank" className="text-2xl underline">
-              {slide.title}
-            </a>
           </div>
         </div>
       ))}

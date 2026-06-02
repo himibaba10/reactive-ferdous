@@ -1,0 +1,59 @@
+{
+  "categories": ["All", "MERN Stack", "WordPress", "HTML/CSS"],
+  "projects": [
+    {
+      "id": "1",
+      "title": "FH Cafe",
+      "category": "MERN Stack",
+      "img": "/projects/project-1.png",
+      "technologies": [
+        "React",
+        "ContextApi",
+        "Tanstack Query",
+        "Express",
+        "MongoDB",
+        "JWT"
+      ],
+      "live": "https://eleventh-assignment-b4b1e.web.app/",
+      "frontendCodeLink": "https://github.com/himibaba10/fh-cafe-client",
+      "backendCodeLink": "https://github.com/himibaba10/fh-cafe-server"
+    },
+    {
+      "id": "2",
+      "title": "Contest HUB",
+      "category": "MERN Stack",
+      "img": "/projects/project-2.png",
+      "technologies": [
+        "React",
+        "ContextApi",
+        "Tanstack Query",
+        "Express",
+        "MongoDB",
+        "Dashboard",
+        "JWT"
+      ],
+      "live": "https://twelfth-assignment-82598.web.app/",
+      "frontendCodeLink": "https://github.com/himibaba10/twelfth-assignment-client",
+      "backendCodeLink": "https://github.com/himibaba10/twelfth-assignment-server"
+    },
+    {
+      "id": "3",
+      "title": "Finsweet",
+      "category": "HTML/CSS",
+      "img": "/projects/project-3.png",
+      "technologies": ["HTML", "CSS"],
+      "live": "https://himibaba10.github.io/own-website7",
+      "frontendCodeLink": "https://github.com/himibaba10/own-website7"
+    },
+    {
+      "id": "4",
+      "title": "Mobile Shop",
+      "category": "MERN Stack",
+      "img": "/projects/project-4.png",
+      "technologies": ["React", "ContextApi", "Tailwind", "Express", "MongoDB"],
+      "live": "https://earnest-frangollo-46f67e.netlify.app",
+      "frontendCodeLink": "https://github.com/himibaba10/tenth-assignment-client",
+      "backendCodeLink": "https://github.com/himibaba10/tenth-assignment-server"
+    }
+  ]
+}
