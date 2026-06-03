@@ -3,7 +3,7 @@ import Heading from "../ui/Heading";
 import { motion, AnimatePresence } from "framer-motion";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { MdFormatQuote } from "react-icons/md";
+import { MdFormatQuote, MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -35,6 +35,14 @@ const Reviews = () => {
     }, 4000); // Slide every 4 seconds
     return () => clearInterval(interval);
   }, [reviews]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % reviews.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  };
 
   if (loading) {
     return (
@@ -75,18 +83,22 @@ const Reviews = () => {
         </AnimatePresence>
       </div>
       
-      {/* Pagination dots */}
-      <div className="flex justify-center gap-2 mt-8 relative z-10">
-        {reviews.map((_, idx) => (
-          <button
-            key={idx}
-            aria-label={`View review ${idx + 1}`}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              idx === currentIndex ? "bg-secondary" : "bg-zinc-600 hover:bg-zinc-400"
-            }`}
-          />
-        ))}
+      {/* Navigation Arrows */}
+      <div className="flex justify-center gap-6 mt-8 relative z-10">
+        <button
+          aria-label="Previous review"
+          onClick={prevSlide}
+          className="p-3 rounded-full bg-zinc-800 hover:bg-secondary hover:text-black transition-colors text-zinc-300 shadow-lg"
+        >
+          <MdChevronLeft size={28} />
+        </button>
+        <button
+          aria-label="Next review"
+          onClick={nextSlide}
+          className="p-3 rounded-full bg-zinc-800 hover:bg-secondary hover:text-black transition-colors text-zinc-300 shadow-lg"
+        >
+          <MdChevronRight size={28} />
+        </button>
       </div>
     </section>
   );
