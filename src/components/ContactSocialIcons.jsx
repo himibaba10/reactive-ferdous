@@ -21,10 +21,10 @@ const ContactSocialIcons = () => {
       >
         <FaLinkedinIn />
       </a>
-      <a href="tg://resolve?domain=himibaba10" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+      <a href="https://t.me/himibaba10" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <FaTelegramPlane />
       </a>
-      <a href="whatsapp://send?phone=+880 1997-722621" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <a href="https://wa.me/8801997722621" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <FaWhatsapp />
       </a>
       <a href="https://www.fiverr.com/ferdoushimel" target="_blank" rel="noopener noreferrer" aria-label="Fiverr">

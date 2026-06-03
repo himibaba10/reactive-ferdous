@@ -12,7 +12,6 @@ const HeroImage = () => {
       />
       <div className="min-h-[410px] sm:min-h-[577px]">
         <img
-          loading="lazy"
           src={heroMainImg}
           alt="Ferdous Ahmed - Freelance WordPress Developer"
           className="mx-auto w-auto relative translate-y-3"

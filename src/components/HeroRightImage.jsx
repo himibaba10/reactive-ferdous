@@ -9,7 +9,7 @@ const HeroRightImage = () => {
       transition={{ duration: 1, ease: "easeInOut" }}
       className="absolute top-64 sm:top-20"
       src={expertiseImg}
-      alt="Hero left image"
+      alt="Hero right expertise image"
     />
   );
 };
