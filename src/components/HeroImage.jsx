@@ -14,7 +14,7 @@ const HeroImage = () => {
         <img
           loading="lazy"
           src={heroMainImg}
-          alt="Image of myself"
+          alt="Ferdous Ahmed - Freelance WordPress Developer"
           className="mx-auto w-auto relative translate-y-3"
         />
       </div>

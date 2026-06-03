@@ -7,7 +7,7 @@ const HeroInfo = () => {
   return (
     <div className="text-center flex flex-col items-center px-4">
       <h1 className="text-2xl sm:text-5xl lg:text-7xl leading-tight flex flex-col items-center">
-        <Heading className="text-5xl mb-3 sm:mb-0 sm:text-7xl text-secondary leading-snug max-w-4xl">
+        <Heading as="span" className="text-5xl mb-3 sm:mb-0 sm:text-7xl text-secondary leading-snug max-w-4xl">
           I Build Web Apps That
         </Heading>
         <motion.div
@@ -32,9 +32,9 @@ const HeroInfo = () => {
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row gap-6 items-center justify-center">
-        <a href="https://wa.me/8801997722621" target="_blank" rel="noopener noreferrer">
-          <PrimaryButton>Start Your Project Today</PrimaryButton>
-        </a>
+        <PrimaryButton href="https://wa.me/8801997722621" target="_blank" rel="noopener noreferrer">
+          Start Your Project Today
+        </PrimaryButton>
         <a href="https://wa.me/8801997722621?text=Hi%20Ferdous,%20I'd%20like%20to%20get%20a%20free%20website%20audit!" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white underline underline-offset-4 transition-colors font-medium">
           Get a Free Website Audit
         </a>

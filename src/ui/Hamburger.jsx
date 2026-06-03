@@ -2,7 +2,7 @@ import React from "react";
 
 const Hamburger = ({ showMenu, setShowMenu }) => {
   return (
-    <button className="block sm:hidden z-20">
+    <button className="block sm:hidden z-20" aria-label="Toggle navigation menu">
       <label
         htmlFor="check"
         className="flex flex-col gap-[5px] rounded-lg cursor-pointer"

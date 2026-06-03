@@ -10,22 +10,24 @@ import { SiFiverr } from "react-icons/si";
 const ContactSocialIcons = () => {
   return (
     <div className="flex gap-4 text-2xl mt-5">
-      <a href="https://www.facebook.com/ferdoushimel10" target="_blank">
+      <a href="https://www.facebook.com/ferdoushimel10" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
         <FaFacebook />
       </a>
       <a
         href="https://www.linkedin.com/in/ferdous-ahmed-6535b0202/"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
       >
         <FaLinkedinIn />
       </a>
-      <a href="tg://resolve?domain=himibaba10" target="_blank">
+      <a href="tg://resolve?domain=himibaba10" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <FaTelegramPlane />
       </a>
-      <a href="whatsapp://send?phone=+880 1997-722621" target="_blank">
+      <a href="whatsapp://send?phone=+880 1997-722621" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <FaWhatsapp />
       </a>
-      <a href="https://www.fiverr.com/ferdoushimel" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.fiverr.com/ferdoushimel" target="_blank" rel="noopener noreferrer" aria-label="Fiverr">
         <SiFiverr />
       </a>
     </div>

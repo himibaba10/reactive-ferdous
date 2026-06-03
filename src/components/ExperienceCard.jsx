@@ -4,16 +4,35 @@ const ExperienceCard = () => {
   return (
     <div className='w-full lg:w-1/4 bg-gray rounded-lg p-4 text-center flex flex-col justify-center items-center'>
       <span className='text-6xl font-semibold'>4+</span>
-      <h3 className='text-4xl leading-tight mt-2 mb-10'>years experience working</h3>
-      <a href='https://drive.google.com/file/d/1TlDFKwKvLif3o3joopWGLU8O47gTQKED/view?usp=sharing' target='_blank' className='mb-3 w-full'>
-        <PrimaryButton width='w-full'>My RESUME</PrimaryButton>
-      </a>
-      <a href='https://drive.google.com/file/d/1fWVnDaAg98PtnXyHNOiDojuXjktX-8rk/view?usp=sharing' target='_blank' className='mb-3 w-full'>
-        <PrimaryButton width='w-full'>My CV</PrimaryButton>
-      </a>
-      <a href='https://www.github.com/himibaba10' target='_blank' className='w-full'>
-        <PrimaryButton width='w-full'>My GitHub</PrimaryButton>
-      </a>
+      <p className='text-4xl leading-tight mt-2 mb-10'>years experience working</p>
+      <PrimaryButton 
+        width='w-full' 
+        href='https://drive.google.com/file/d/1TlDFKwKvLif3o3joopWGLU8O47gTQKED/view?usp=sharing' 
+        target='_blank' 
+        rel='noopener noreferrer' 
+        className='mb-3'
+      >
+        My RESUME
+      </PrimaryButton>
+      
+      <PrimaryButton 
+        width='w-full' 
+        href='https://drive.google.com/file/d/1fWVnDaAg98PtnXyHNOiDojuXjktX-8rk/view?usp=sharing' 
+        target='_blank' 
+        rel='noopener noreferrer' 
+        className='mb-3'
+      >
+        My CV
+      </PrimaryButton>
+      
+      <PrimaryButton 
+        width='w-full' 
+        href='https://www.github.com/himibaba10' 
+        target='_blank' 
+        rel='noopener noreferrer'
+      >
+        My GitHub
+      </PrimaryButton>
     </div>
   );
 };

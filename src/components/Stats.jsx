@@ -39,12 +39,12 @@ const Stats = () => {
             variants={itemVariants}
             className="flex flex-col items-center text-center"
           >
-            <h3 className="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-zinc-500 mb-2 drop-shadow-lg">
+            <div className="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-zinc-500 mb-2 drop-shadow-lg">
               {stat.value}
-            </h3>
-            <p className="text-secondary font-bold uppercase tracking-widest text-sm">
+            </div>
+            <div className="text-secondary font-bold uppercase tracking-widest text-sm">
               {stat.label}
-            </p>
+            </div>
           </motion.div>
         ))}
       </motion.div>

@@ -20,6 +20,7 @@ export const ProjectImages = ({ projects }) => {
               className="w-full h-full object-cover object-top group-hover:object-[0_100%] transition-all duration-[3s] ease-in-out"
               src={slide.img}
               alt={slide.title}
+              loading="lazy"
             />
           </div>
           
@@ -28,7 +29,7 @@ export const ProjectImages = ({ projects }) => {
             <a 
               href={slide.live} 
               target="_blank" 
-              rel="noreferrer" 
+              rel="noopener noreferrer" 
               className="text-2xl font-bold hover:text-blue-500 dark:hover:text-blue-400 transition-colors mb-4 inline-block"
             >
               {slide.title} ↗
@@ -50,7 +51,7 @@ export const ProjectImages = ({ projects }) => {
                 <a
                   href={slide.frontendCodeLink}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline"
                 >
                   Frontend Code
@@ -60,7 +61,7 @@ export const ProjectImages = ({ projects }) => {
                 <a
                   href={slide.backendCodeLink}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline"
                 >
                   Backend Code

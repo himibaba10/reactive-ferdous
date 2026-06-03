@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-const Heading = ({ children, className }) => {
+const Heading = ({ children, className, as: Component = "h2" }) => {
   return (
-    <div className={`uppercase ${className}`}>
+    <Component className={`uppercase ${className}`}>
       {children.split("").map((char, index) => (
         <motion.span
           key={index}
@@ -20,7 +20,7 @@ const Heading = ({ children, className }) => {
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
-    </div>
+    </Component>
   );
 };
 

@@ -17,14 +17,14 @@ const LeadBanner = ({ text, buttonText, message }) => {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
       >
-        <h3 className="text-3xl sm:text-4xl font-bold text-white text-center md:text-left leading-tight flex-1">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center md:text-left leading-tight flex-1">
           {text}
-        </h3>
+        </h2>
         
         <div className="shrink-0">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            <PrimaryButton>{buttonText}</PrimaryButton>
-          </a>
+          <PrimaryButton href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            {buttonText}
+          </PrimaryButton>
         </div>
       </motion.div>
     </section>

@@ -6,26 +6,26 @@ import { MdWeb, MdOutlineShoppingCart, MdOutlineSpeed, MdOutlineDesignServices }
 const services = [
   {
     id: 1,
-    title: "Custom Web Applications",
-    description: "Scalable, secure, and fast web apps tailored to your unique business needs using the MERN stack.",
-    icon: <MdWeb size={40} className="text-secondary" />
+    title: "Lead-Generation WordPress",
+    description: "Tired of slow, bloated sites? I build streamlined WordPress architectures designed specifically to rank higher on Google (SEO) and capture leads on autopilot.",
+    icon: <MdOutlineShoppingCart size={40} className="text-secondary" />
   },
   {
     id: 2,
-    title: "E-Commerce Solutions",
-    description: "High-converting online stores built for seamless shopping experiences and robust inventory management.",
-    icon: <MdOutlineShoppingCart size={40} className="text-secondary" />
+    title: "Custom Web Applications",
+    description: "Develop robust, ultra-fast applications engineered to scale alongside your business. A faster app means lower bounce rates and higher user retention.",
+    icon: <MdWeb size={40} className="text-secondary" />
   },
   {
     id: 3,
     title: "Performance Optimization",
-    description: "Speed up your existing website to improve SEO rankings, retain visitors, and boost conversion rates.",
+    description: "Speed up your existing website to improve SEO rankings, retain visitors, and instantly boost your conversion rates.",
     icon: <MdOutlineSpeed size={40} className="text-secondary" />
   },
   {
     id: 4,
-    title: "UI/UX Implementation",
-    description: "Pixel-perfect conversion of Figma/Adobe XD designs into fully responsive, interactive web interfaces.",
+    title: "High-Converting Frontends",
+    description: "I translate static Figma designs into pixel-perfect, interactive experiences with micro-animations proven to keep users engaged and clicking.",
     icon: <MdOutlineDesignServices size={40} className="text-secondary" />
   }
 ];

@@ -16,6 +16,10 @@ import WordPress from "../assets/Wordpress 1.png";
 const SkillCards = () => {
   const skills = [
     {
+      name: "WordPress",
+      image: WordPress,
+    },
+    {
       name: "HTML",
       image: HTML,
     },
@@ -58,10 +62,6 @@ const SkillCards = () => {
     {
       name: "Tailwind",
       image: Tailwind,
-    },
-    {
-      name: "WordPress",
-      image: WordPress,
     },
   ];
   return (

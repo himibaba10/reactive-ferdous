@@ -69,6 +69,7 @@ const Reviews = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.5 }}
+            loading="lazy"
             className="w-full max-h-[600px] object-contain rounded-xl shadow-2xl"
           />
         </AnimatePresence>
@@ -79,6 +80,7 @@ const Reviews = () => {
         {reviews.map((_, idx) => (
           <button
             key={idx}
+            aria-label={`View review ${idx + 1}`}
             onClick={() => setCurrentIndex(idx)}
             className={`w-3 h-3 rounded-full transition-colors ${
               idx === currentIndex ? "bg-secondary" : "bg-zinc-600 hover:bg-zinc-400"

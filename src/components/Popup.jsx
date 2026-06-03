@@ -57,15 +57,15 @@ const Popup = () => {
               As a first-time client, I want to prove my value to you. Let's build your dream project at half the cost. <strong className="text-white">Valid for the next 2 clients only.</strong>
             </p>
 
-            <a
+            <PrimaryButton
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closePopup}
               className="inline-block"
             >
-              <PrimaryButton>Claim My 50% Discount</PrimaryButton>
-            </a>
+              Claim My 50% Discount
+            </PrimaryButton>
             
             <button 
               onClick={closePopup}
