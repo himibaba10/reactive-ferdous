@@ -48,9 +48,12 @@ const Portfolio = () => {
       className="section flex flex-col items-center my-20 w-full"
     >
       <div className="w-full text-center flex flex-col items-center">
-        <Heading className="text-5xl sm:text-7xl mb-10">
-          The works closest to my heart
+        <Heading className="text-5xl sm:text-7xl mb-4">
+          Featured Projects
         </Heading>
+        <p className="text-zinc-400 max-w-2xl mx-auto text-lg mb-10">
+          Take a look at how I've helped businesses scale and improve their digital presence with custom-built solutions.
+        </p>
         
         {/* Tabs */}
         {!loading && categories.length > 1 && (

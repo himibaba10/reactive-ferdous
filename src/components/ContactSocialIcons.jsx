@@ -5,6 +5,7 @@ import {
   FaTelegramPlane,
   FaWhatsapp,
 } from "react-icons/fa";
+import { SiFiverr } from "react-icons/si";
 
 const ContactSocialIcons = () => {
   return (
@@ -23,6 +24,9 @@ const ContactSocialIcons = () => {
       </a>
       <a href="whatsapp://send?phone=+880 1997-722621" target="_blank">
         <FaWhatsapp />
+      </a>
+      <a href="https://www.fiverr.com/ferdoushimel" target="_blank" rel="noopener noreferrer">
+        <SiFiverr />
       </a>
     </div>
   );

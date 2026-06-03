@@ -22,7 +22,9 @@ const ContactButton = ({ children }) => {
       variants={button}
       transition={{ duration: 0.3 }}
       whileHover="changePosition"
-      href="#contact"
+      href="https://wa.me/8801997722621"
+      target="_blank"
+      rel="noopener noreferrer"
       className="uppercase text-sm sm:text-lg inline-flex items-center sm:gap-2 p-1 pl-1 sm:pl-4 rounded-full relative"
     >
       <motion.span

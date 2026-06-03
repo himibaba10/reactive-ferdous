@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Admin from "./components/Admin.jsx";
+import AdminReviews from "./components/AdminReviews.jsx";
+import AdminLogos from "./components/AdminLogos.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -11,8 +13,16 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/admin",
+    path: "/admin/add-project",
     element: <Admin />,
+  },
+  {
+    path: "/admin/add-reviews",
+    element: <AdminReviews />,
+  },
+  {
+    path: "/admin/add-logo",
+    element: <AdminLogos />,
   },
 ]);
 
