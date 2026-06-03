@@ -9,4 +9,15 @@ export default defineConfig({
     viteCompression({ algorithm: 'gzip', ext: '.gz' }),
     viteCompression({ algorithm: 'brotliCompress', ext: '.br' })
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          framer: ['framer-motion'],
+          firebase: ['firebase/app', 'firebase/firestore']
+        }
+      }
+    }
+  }
 })
