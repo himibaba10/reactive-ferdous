@@ -15,13 +15,13 @@ const AdditionalSkills = () => {
         Additional skills
       </Heading>
       <div className="flex flex-wrap items-center justify-center md:justify-between gap-5 md:gap-2">
-        <img className="w-12 md:w-auto" src={Bootstrap} alt="Bootstrap" />
-        <img className="w-12 md:w-auto" src={Axios} alt="Axios" />
-        <img className="w-12 md:w-auto" src={Redux} alt="Redux" />
-        <img className="w-12 md:w-auto" src={MUI} alt="MUI" />
-        <img className="w-12 md:w-auto" src={Firebase} alt="Firebase" />
-        <img className="w-12 md:w-auto" src={WordPress} alt="WordPress" />
-        <img className="w-12 md:w-auto" src={FramerMotion} alt="FramerMotion" />
+        <img className="w-12 md:w-auto" src={Bootstrap} alt="Bootstrap" loading="lazy" />
+        <img className="w-12 md:w-auto" src={Axios} alt="Axios" loading="lazy" />
+        <img className="w-12 md:w-auto" src={Redux} alt="Redux" loading="lazy" />
+        <img className="w-12 md:w-auto" src={MUI} alt="MUI" loading="lazy" />
+        <img className="w-12 md:w-auto" src={Firebase} alt="Firebase" loading="lazy" />
+        <img className="w-12 md:w-auto" src={WordPress} alt="WordPress" loading="lazy" />
+        <img className="w-12 md:w-auto" src={FramerMotion} alt="FramerMotion" loading="lazy" />
       </div>
     </section>
   );

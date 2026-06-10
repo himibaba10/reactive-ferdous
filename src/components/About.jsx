@@ -68,6 +68,7 @@ const About = () => {
                 transition={{ duration: 0.8, ease: 'easeInOut' }}
                 src={img}
                 alt='Portfolio Snippet'
+                loading='lazy'
                 className={`absolute w-3/5 aspect-[5/6] object-cover object-top rounded-xl shadow-2xl border ${isFront ? 'border-2 border-secondary/70' : 'border-zinc-700/50'} ${isHidden ? 'pointer-events-none' : ''}`}
               />
             );

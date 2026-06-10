@@ -14,9 +14,10 @@ const SkillCard = ({ skill }) => {
       <img
         src={image}
         alt={name}
+        loading="lazy"
         className="w-20 h-auto absolute -top-5 -right-5 scale-150 grayscale opacity-20 rotate-12"
       />
-      <img src={image} alt={name} className="w-20 h-auto" />
+      <img src={image} alt={name} loading="lazy" className="w-20 h-auto" />
       <h3 className="text-secondary font-bebas text-3xl pt-5 mt-auto">
         {name}
       </h3>
