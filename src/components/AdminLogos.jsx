@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { MdDelete, MdEdit, MdCheck, MdClose } from 'react-icons/md';
+import imageCompression from 'browser-image-compression';
 
 const AdminLogos = () => {
   const [logos, setLogos] = useState([]);
-  const [newLogoUrl, setNewLogoUrl] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
@@ -31,18 +32,61 @@ const AdminLogos = () => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    if (!newLogoUrl) return;
+    if (!selectedFile) return;
     
     setSubmitting(true);
     setMessage('');
     try {
-      await addDoc(collection(db, 'logos'), { imgUrl: newLogoUrl });
+      // Compress image to ensure it is under 1MB
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+      const compressedFile = await imageCompression(selectedFile, options);
+      
+      // Generate SHA-1 signature for secure upload
+      const timestamp = Math.round((new Date()).getTime() / 1000);
+      const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
+      const folder = 'Reactive Ferdous/logos';
+      
+      const strToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
+      const encoder = new TextEncoder();
+      const dataStr = encoder.encode(strToSign);
+      const hashBuffer = await crypto.subtle.digest('SHA-1', dataStr);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      // Prepare form data for Cloudinary
+      const formData = new FormData();
+      formData.append('file', compressedFile);
+      formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
+      formData.append('timestamp', timestamp);
+      formData.append('signature', signature);
+      formData.append('folder', folder);
+      
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error?.message || 'Cloudinary upload failed');
+      }
+      
+      const secureUrl = data.secure_url;
+
+      // Add to Firestore
+      await addDoc(collection(db, 'logos'), { imgUrl: secureUrl });
       setMessage('Logo added successfully!');
-      setNewLogoUrl('');
+      setSelectedFile(null);
+      e.target.reset(); // Reset the file input visually
       fetchLogos();
     } catch (error) {
       console.error("Error adding logo:", error);
-      setMessage('Error adding logo.');
+      setMessage(`Error adding logo: ${error.message || 'Unknown error'}`);
     } finally {
       setSubmitting(false);
     }
@@ -93,16 +137,15 @@ const AdminLogos = () => {
           <h2 className='text-xl font-bold mb-4 text-zinc-800 dark:text-zinc-200'>Add New Logo</h2>
           <form onSubmit={handleAdd} className='flex gap-4'>
             <input
-              type='text'
-              value={newLogoUrl}
-              onChange={(e) => setNewLogoUrl(e.target.value)}
+              type='file'
+              accept='image/*'
+              onChange={(e) => setSelectedFile(e.target.files[0])}
               required
-              className='flex-grow px-4 py-2 border rounded-md bg-white text-zinc-900 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none'
-              placeholder='/logos/logo-1.png or https://...'
+              className='flex-grow px-4 py-2 border rounded-md bg-white text-zinc-900 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-zinc-800 dark:file:text-blue-400 dark:hover:file:bg-zinc-600 cursor-pointer'
             />
             <button 
               type='submit' 
-              disabled={submitting} 
+              disabled={submitting || !selectedFile} 
               className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md transition-colors disabled:opacity-70 whitespace-nowrap'
             >
               {submitting ? 'Adding...' : 'Add Logo'}

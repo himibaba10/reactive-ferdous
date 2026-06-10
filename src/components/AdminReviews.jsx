@@ -1,9 +1,10 @@
 import { addDoc, collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
+import imageCompression from 'browser-image-compression';
 
 const AdminReviews = () => {
-  const [imgUrl, setImgUrl] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [reviews, setReviews] = useState([]);
@@ -27,17 +28,60 @@ const AdminReviews = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedFile) return;
+
     setLoading(true);
     setMessage('');
 
     try {
-      await addDoc(collection(db, 'reviews'), { img: imgUrl });
+      // Compress image
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+      const compressedFile = await imageCompression(selectedFile, options);
+
+      // Upload to Cloudinary
+      const timestamp = Math.round((new Date()).getTime() / 1000);
+      const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
+      const folder = 'Reactive Ferdous/reviews';
+      
+      const strToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
+      const encoder = new TextEncoder();
+      const dataStr = encoder.encode(strToSign);
+      const hashBuffer = await crypto.subtle.digest('SHA-1', dataStr);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      const formData = new FormData();
+      formData.append('file', compressedFile);
+      formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
+      formData.append('timestamp', timestamp);
+      formData.append('signature', signature);
+      formData.append('folder', folder);
+      
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error?.message || 'Cloudinary upload failed');
+      }
+      
+      const secureUrl = data.secure_url;
+
+      await addDoc(collection(db, 'reviews'), { img: secureUrl });
       setMessage('Review image added successfully!');
-      setImgUrl('');
+      setSelectedFile(null);
+      e.target.reset(); // Reset file input
       fetchReviews();
     } catch (error) {
       console.error('Error adding review: ', error);
-      setMessage('Error adding review. Check console.');
+      setMessage(`Error adding review: ${error.message || 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
@@ -65,18 +109,17 @@ const AdminReviews = () => {
 
         <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
           <div>
-            <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1'>Review Image URL / Path</label>
+            <label className='block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1'>Review Image File</label>
             <input
-              type='text'
-              value={imgUrl}
-              onChange={(e) => setImgUrl(e.target.value)}
+              type='file'
+              accept='image/*'
+              onChange={(e) => setSelectedFile(e.target.files[0])}
               required
-              className='w-full px-4 py-2 border rounded-md bg-white text-zinc-900 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none'
-              placeholder='e.g. /reviews/review-1.webp or https://...'
+              className='w-full px-4 py-2 border rounded-md bg-white text-zinc-900 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-zinc-800 dark:file:text-blue-400 dark:hover:file:bg-zinc-600 cursor-pointer'
             />
           </div>
 
-          <button type='submit' disabled={loading} className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition-colors mt-4 disabled:opacity-70'>
+          <button type='submit' disabled={loading || !selectedFile} className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition-colors mt-4 disabled:opacity-70'>
             {loading ? 'Adding...' : 'Add Review'}
           </button>
         </form>
