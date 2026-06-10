@@ -1,125 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import React from 'react';
 import { MdDelete, MdEdit, MdCheck, MdClose } from 'react-icons/md';
-import imageCompression from 'browser-image-compression';
+import { useAdminLogos } from '../hooks/useAdminLogos';
 
 const AdminLogos = () => {
-  const [logos, setLogos] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
-  const [message, setMessage] = useState('');
-  const [editingId, setEditingId] = useState(null);
-  const [editUrl, setEditUrl] = useState('');
-
-  const fetchLogos = async () => {
-    setLoading(true);
-    try {
-      const querySnapshot = await getDocs(collection(db, 'logos'));
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setLogos(data);
-    } catch (error) {
-      console.error("Error fetching logos:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchLogos();
-  }, []);
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-    if (!selectedFile) return;
-    
-    setSubmitting(true);
-    setMessage('');
-    try {
-      // Compress image to ensure it is under 1MB
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
-      const compressedFile = await imageCompression(selectedFile, options);
-      
-      // Generate SHA-1 signature for secure upload
-      const timestamp = Math.round((new Date()).getTime() / 1000);
-      const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
-      const folder = 'Reactive Ferdous/logos';
-      
-      const strToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
-      const encoder = new TextEncoder();
-      const dataStr = encoder.encode(strToSign);
-      const hashBuffer = await crypto.subtle.digest('SHA-1', dataStr);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      
-      // Prepare form data for Cloudinary
-      const formData = new FormData();
-      formData.append('file', compressedFile);
-      formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
-      formData.append('timestamp', timestamp);
-      formData.append('signature', signature);
-      formData.append('folder', folder);
-      
-      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: 'POST',
-        body: formData
-      });
-      
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error?.message || 'Cloudinary upload failed');
-      }
-      
-      const secureUrl = data.secure_url;
-
-      // Add to Firestore
-      await addDoc(collection(db, 'logos'), { imgUrl: secureUrl });
-      setMessage('Logo added successfully!');
-      setSelectedFile(null);
-      e.target.reset(); // Reset the file input visually
-      fetchLogos();
-    } catch (error) {
-      console.error("Error adding logo:", error);
-      setMessage(`Error adding logo: ${error.message || 'Unknown error'}`);
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this logo?")) return;
-    try {
-      await deleteDoc(doc(db, 'logos', id));
-      setLogos(logos.filter(logo => logo.id !== id));
-      setMessage('Logo deleted successfully!');
-    } catch (error) {
-      console.error("Error deleting logo:", error);
-      setMessage('Error deleting logo.');
-    }
-  };
-
-  const handleEditStart = (logo) => {
-    setEditingId(logo.id);
-    setEditUrl(logo.imgUrl);
-  };
-
-  const handleEditSave = async (id) => {
-    try {
-      await updateDoc(doc(db, 'logos', id), { imgUrl: editUrl });
-      setEditingId(null);
-      setLogos(logos.map(logo => logo.id === id ? { ...logo, imgUrl: editUrl } : logo));
-      setMessage('Logo updated successfully!');
-    } catch (error) {
-      console.error("Error updating logo:", error);
-      setMessage('Error updating logo.');
-    }
-  };
+  const {
+    logos,
+    selectedFile,
+    setSelectedFile,
+    loading,
+    submitting,
+    message,
+    editingId,
+    setEditingId,
+    editUrl,
+    setEditUrl,
+    handleAdd,
+    handleDelete,
+    handleEditStart,
+    handleEditSave
+  } = useAdminLogos();
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center'>

@@ -1,19 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import { LuUser } from "react-icons/lu";
 import { FaRegEnvelope, FaRegStickyNote } from "react-icons/fa";
 import PrimaryButton from "../ui/PrimaryButton";
 import { motion } from "framer-motion";
-import { useForm, ValidationError } from "@formspree/react";
+import { useContactForm } from "../hooks/useContactForm";
 
 const ContactForm = () => {
-  const [state, handleSubmit] = useForm("xvoebwnj");
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-    await handleSubmit(event);
-    form.reset();
-  };
+  const { state, handleFormSubmit } = useContactForm("xvoebwnj");
 
   return (
     <div

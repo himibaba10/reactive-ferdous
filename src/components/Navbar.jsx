@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import React from 'react';
 import logo from '../assets/Logo white.png';
 import ContactButton from '../ui/ContactButton';
 import Hamburger from '../ui/Hamburger';
 import NavLinks from './NavLinks';
+import { useNavbar } from '../hooks/useNavbar';
 
 const Navbar = () => {
-  const [active, setActive] = useState('');
-  const [showMenu, setShowMenu] = useState(false);
+  const { active, setActive, showMenu, setShowMenu } = useNavbar();
   return (
     <nav className='z-50 sticky top-0 backdrop-blur-xl'>
       <div className='flex items-center section justify-between'>

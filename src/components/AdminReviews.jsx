@@ -1,103 +1,16 @@
-import { addDoc, collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
-import { db } from '../firebase';
-import imageCompression from 'browser-image-compression';
+import React from 'react';
+import { useAdminReviews } from '../hooks/useAdminReviews';
 
 const AdminReviews = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [reviews, setReviews] = useState([]);
-
-  const fetchReviews = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, 'reviews'));
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setReviews(data);
-    } catch (error) {
-      console.error('Error fetching reviews:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchReviews();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selectedFile) return;
-
-    setLoading(true);
-    setMessage('');
-
-    try {
-      // Compress image
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true
-      };
-      const compressedFile = await imageCompression(selectedFile, options);
-
-      // Upload to Cloudinary
-      const timestamp = Math.round((new Date()).getTime() / 1000);
-      const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
-      const folder = 'Reactive Ferdous/reviews';
-      
-      const strToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
-      const encoder = new TextEncoder();
-      const dataStr = encoder.encode(strToSign);
-      const hashBuffer = await crypto.subtle.digest('SHA-1', dataStr);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      
-      const formData = new FormData();
-      formData.append('file', compressedFile);
-      formData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
-      formData.append('timestamp', timestamp);
-      formData.append('signature', signature);
-      formData.append('folder', folder);
-      
-      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-        method: 'POST',
-        body: formData
-      });
-      
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error?.message || 'Cloudinary upload failed');
-      }
-      
-      const secureUrl = data.secure_url;
-
-      await addDoc(collection(db, 'reviews'), { img: secureUrl });
-      setMessage('Review image added successfully!');
-      setSelectedFile(null);
-      e.target.reset(); // Reset file input
-      fetchReviews();
-    } catch (error) {
-      console.error('Error adding review: ', error);
-      setMessage(`Error adding review: ${error.message || 'Unknown error'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this review?")) return;
-    try {
-      await deleteDoc(doc(db, 'reviews', id));
-      setMessage('Review deleted successfully!');
-      fetchReviews();
-    } catch (error) {
-      console.error('Error deleting review: ', error);
-      setMessage('Error deleting review. Check console.');
-    }
-  };
+  const {
+    selectedFile,
+    setSelectedFile,
+    loading,
+    message,
+    reviews,
+    handleSubmit,
+    handleDelete
+  } = useAdminReviews();
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center justify-center'>

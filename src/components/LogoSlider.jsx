@@ -1,25 +1,8 @@
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { db } from '../firebase';
+import React from 'react';
+import { useLogoSlider } from '../hooks/useLogoSlider';
 
 const LogoSlider = () => {
-  const [logos, setLogos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchLogos = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, 'logos'));
-        const data = querySnapshot.docs.map((doc) => doc.data().imgUrl);
-        setLogos(data);
-      } catch (error) {
-        console.error('Error fetching logos:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchLogos();
-  }, []);
+  const { logos, loading } = useLogoSlider();
 
   if (loading || logos.length === 0) return null;
 

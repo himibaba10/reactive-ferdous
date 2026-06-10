@@ -1,25 +1,13 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import Heading from '../ui/Heading';
 import PrimaryButton from '../ui/PrimaryButton';
+import { useAboutSlider } from '../hooks/useAboutSlider';
 
 const projectImages = ['/projects/marvich-ai.webp', '/projects/kamro.webp', '/projects/electricallpro.webp', '/projects/claimcloud-cz.webp', '/projects/zeplan.webp'];
 
 const About = () => {
-  const [images, setImages] = useState(projectImages);
-
-  // Auto-slide every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setImages((prev) => {
-        const next = [...prev];
-        const first = next.shift();
-        next.push(first);
-        return next;
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const images = useAboutSlider(projectImages);
 
   return (
     <section id='about' className='my-16 sm:my-28 section'>

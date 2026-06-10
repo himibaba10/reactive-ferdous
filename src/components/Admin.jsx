@@ -1,175 +1,21 @@
-import { addDoc, collection, getDocs, deleteDoc, doc, updateDoc } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
-import { db } from '../firebase';
-import imageCompression from 'browser-image-compression';
+import React from 'react';
+import { useAdminProjects } from '../hooks/useAdminProjects';
 
 const Admin = () => {
-  const [formData, setFormData] = useState({
-    title: '',
-    category: '',
-    live: '',
-    frontendCodeLink: '',
-    backendCodeLink: '',
-    technologies: '',
-  });
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [projects, setProjects] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-
-  const fetchProjects = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, 'projects'));
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setProjects(data);
-    } catch (error) {
-      console.error("Error fetching projects:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleEditStart = (project) => {
-    setEditingId(project.id);
-    setFormData({
-      title: project.title,
-      category: project.category,
-      live: project.live,
-      frontendCodeLink: project.frontendCodeLink || '',
-      backendCodeLink: project.backendCodeLink || '',
-      technologies: project.technologies.join(', '),
-    });
-    setSelectedFile(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleCancelEdit = () => {
-    setEditingId(null);
-    setFormData({
-      title: '',
-      category: '',
-      live: '',
-      frontendCodeLink: '',
-      backendCodeLink: '',
-      technologies: '',
-    });
-    setSelectedFile(null);
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this project?")) return;
-    try {
-      await deleteDoc(doc(db, 'projects', id));
-      setMessage('Project deleted successfully!');
-      fetchProjects();
-    } catch (error) {
-      console.error('Error deleting project: ', error);
-      setMessage('Error deleting project.');
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!editingId && !selectedFile) {
-      setMessage('Please select an image file for the project.');
-      return;
-    }
-    
-    setLoading(true);
-    setMessage('');
-
-    try {
-      let secureUrl = null;
-      if (selectedFile) {
-        // Compress image
-        const options = {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1920,
-          useWebWorker: true
-        };
-        const compressedFile = await imageCompression(selectedFile, options);
-
-        // Upload to Cloudinary
-        const timestamp = Math.round((new Date()).getTime() / 1000);
-        const apiSecret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
-        const folder = 'Reactive Ferdous/projects';
-        
-        const strToSign = `folder=${folder}&timestamp=${timestamp}${apiSecret}`;
-        const encoder = new TextEncoder();
-        const dataStr = encoder.encode(strToSign);
-        const hashBuffer = await crypto.subtle.digest('SHA-1', dataStr);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const signature = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        
-        const uploadFormData = new FormData();
-        uploadFormData.append('file', compressedFile);
-        uploadFormData.append('api_key', import.meta.env.VITE_CLOUDINARY_API_KEY);
-        uploadFormData.append('timestamp', timestamp);
-        uploadFormData.append('signature', signature);
-        uploadFormData.append('folder', folder);
-        
-        const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-          method: 'POST',
-          body: uploadFormData
-        });
-        
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.error?.message || 'Cloudinary upload failed');
-        }
-        
-        secureUrl = data.secure_url;
-      }
-
-      const techArray = formData.technologies
-        .split(',')
-        .map((tech) => tech.trim())
-        .filter((tech) => tech.length > 0);
-
-      const projectData = {
-        ...formData,
-        technologies: techArray,
-      };
-
-      if (secureUrl) {
-        projectData.img = secureUrl;
-      }
-
-      if (editingId) {
-        await updateDoc(doc(db, 'projects', editingId), projectData);
-        setMessage('Project updated successfully!');
-        setEditingId(null);
-      } else {
-        await addDoc(collection(db, 'projects'), projectData);
-        setMessage('Project added successfully!');
-      }
-
-      setFormData({
-        title: '',
-        category: '',
-        live: '',
-        frontendCodeLink: '',
-        backendCodeLink: '',
-        technologies: '',
-      });
-      setSelectedFile(null);
-      e.target.reset(); // clear file input
-      fetchProjects();
-    } catch (error) {
-      console.error('Error saving document: ', error);
-      setMessage(`Error saving project: ${error.message || 'Unknown error'}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    formData,
+    selectedFile,
+    setSelectedFile,
+    loading,
+    message,
+    projects,
+    editingId,
+    handleChange,
+    handleEditStart,
+    handleCancelEdit,
+    handleDelete,
+    handleSubmit
+  } = useAdminProjects();
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center justify-center'>
