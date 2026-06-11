@@ -1,32 +1,37 @@
 import React from "react";
 import Heading from "../ui/Heading";
 import { motion } from "framer-motion";
-import { MdWeb, MdOutlineShoppingCart, MdOutlineSpeed, MdOutlineDesignServices } from "react-icons/md";
+import { MdWeb, MdOutlineDesignServices, MdOutlineBrush, MdArrowForward, MdOutlineFormatShapes } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const services = [
   {
     id: 1,
-    title: "Lead-Generation WordPress",
-    description: "Tired of slow, bloated sites? I build streamlined WordPress architectures designed specifically to rank higher on Google (SEO) and capture leads on autopilot.",
-    icon: <MdOutlineShoppingCart size={40} className="text-secondary" />
+    title: "Web Development",
+    description: "I build lightning-fast, high-converting websites and applications tailored to solve your specific business challenges and rank higher on Google.",
+    icon: <MdWeb size={40} className="text-secondary" />,
+    url: "/services/web-development"
   },
   {
     id: 2,
-    title: "Custom Web Applications",
-    description: "Develop robust, ultra-fast applications engineered to scale alongside your business. A faster app means lower bounce rates and higher user retention.",
-    icon: <MdWeb size={40} className="text-secondary" />
+    title: "Graphic Design",
+    description: "Stand out from the crowd with premium, eye-catching visual identities and marketing assets designed to elevate your brand.",
+    icon: <MdOutlineBrush size={40} className="text-secondary" />,
+    url: "/services/graphic-design"
   },
   {
     id: 3,
-    title: "Performance Optimization",
-    description: "Speed up your existing website to improve SEO rankings, retain visitors, and instantly boost your conversion rates.",
-    icon: <MdOutlineSpeed size={40} className="text-secondary" />
+    title: "Figma UI/UX Design",
+    description: "I craft beautiful, user-centric interfaces in Figma that provide seamless experiences, micro-animations, and high conversion rates.",
+    icon: <MdOutlineDesignServices size={40} className="text-secondary" />,
+    url: "/services/figma-design"
   },
   {
     id: 4,
-    title: "High-Converting Frontends",
-    description: "I translate static Figma designs into pixel-perfect, interactive experiences with micro-animations proven to keep users engaged and clicking.",
-    icon: <MdOutlineDesignServices size={40} className="text-secondary" />
+    title: "Logo Design",
+    description: "I create distinctive, memorable logos that capture the essence of your business and serve as the cornerstone of your brand identity.",
+    icon: <MdOutlineFormatShapes size={40} className="text-secondary" />,
+    url: "/services/logo-design"
   }
 ];
 
@@ -57,7 +62,7 @@ const Services = () => {
       </div>
 
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -67,15 +72,23 @@ const Services = () => {
           <motion.div 
             key={service.id}
             variants={itemVariants}
-            className="bg-zinc-800/50 border border-zinc-700/50 p-8 rounded-2xl hover:bg-zinc-800 transition-colors duration-300 group"
+            className="bg-zinc-800/50 border border-zinc-700/50 p-6 rounded-2xl hover:bg-zinc-800 transition-colors duration-300 group flex flex-col"
           >
-            <div className="bg-zinc-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+            <div className="bg-zinc-900 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
               {service.icon}
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-            <p className="text-zinc-400 leading-relaxed">
+            <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+            <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow">
               {service.description}
             </p>
+            <Link 
+              to={service.url}
+              onClick={() => window.scrollTo(0, 0)}
+              className="inline-flex items-center text-secondary text-sm font-semibold group/link mt-auto w-fit"
+            >
+              Learn More 
+              <MdArrowForward className="ml-2 group-hover/link:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         ))}
       </motion.div>
