@@ -12,10 +12,14 @@ export const usePortfolio = () => {
     const fetchProjects = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "projects"));
-        const projectsData = querySnapshot.docs.map((doc) => ({
+        const rawData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
+        
+        // Exclude design categories so they don't show up in the Web Dev portfolio
+        const excludedCategories = ['Graphic Design', 'Figma Design', 'Logo Design'];
+        const projectsData = rawData.filter(p => !excludedCategories.includes(p.category));
         
         // Extract unique categories
         const uniqueCategories = [

@@ -8,7 +8,7 @@ const services = [
   {
     id: 1,
     title: "Web Development",
-    description: "I build lightning-fast, high-converting websites and applications tailored to solve your specific business challenges and rank higher on Google.",
+    description: "We build lightning-fast, high-converting websites and applications tailored to solve your specific business challenges and rank higher on Google.",
     icon: <MdWeb size={40} className="text-secondary" />,
     url: "/services/web-development"
   },
@@ -22,14 +22,14 @@ const services = [
   {
     id: 3,
     title: "Figma UI/UX Design",
-    description: "I craft beautiful, user-centric interfaces in Figma that provide seamless experiences, micro-animations, and high conversion rates.",
+    description: "We craft beautiful, user-centric interfaces in Figma that provide seamless experiences, micro-animations, and high conversion rates.",
     icon: <MdOutlineDesignServices size={40} className="text-secondary" />,
     url: "/services/figma-design"
   },
   {
     id: 4,
     title: "Logo Design",
-    description: "I create distinctive, memorable logos that capture the essence of your business and serve as the cornerstone of your brand identity.",
+    description: "We create distinctive, memorable logos that capture the essence of your business and serve as the cornerstone of your brand identity.",
     icon: <MdOutlineFormatShapes size={40} className="text-secondary" />,
     url: "/services/logo-design"
   }
@@ -55,9 +55,9 @@ const Services = () => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-secondary rounded-full filter blur-[120px] opacity-10 -z-10"></div>
       
       <div className="text-center mb-16">
-        <Heading className="text-4xl sm:text-6xl mb-6">How I Can Help You</Heading>
+        <Heading className="text-4xl sm:text-6xl mb-6">How We Can Help You</Heading>
         <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-          I partner with businesses to deliver digital solutions that solve real problems. Here is what I specialize in.
+          We partner with businesses to deliver digital solutions that solve real problems. Here is what We specialize in.
         </p>
       </div>
 

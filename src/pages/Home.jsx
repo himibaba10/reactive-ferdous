@@ -16,7 +16,7 @@ function Home() {
     <>
       <SEO 
         title="Ferdous | Web Developer & Designer" 
-        description="I partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design." 
+        description="We partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design." 
       />
 
       {/* Above the fold (eager loaded) */}
@@ -27,11 +27,11 @@ function Home() {
 
       {/* Below the fold (lazy loaded) */}
       <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-500'>Loading...</div>}>
-        <LeadBanner text="Not sure where to start? Let's map out your strategy." buttonText='Get a Free Audit' message="Hi Ferdous, I'd like to get a free website audit!" />
+        <LeadBanner text="Not sure where to start? Let's map out your strategy." buttonText='Get a Free Audit' message="Hi Team, I'd like to get a free website audit!" />
 
         <Reviews />
 
-        <LeadBanner text='Ready to become my next success story?' buttonText='Discuss Your Project' message="Hi Ferdous, I'm ready to become your next success story!" />
+        <LeadBanner text='Ready to become our next success story?' buttonText='Discuss Your Project' message="Hi Team, I'm ready to become your next success story!" />
 
         <FAQ />
         <Contact />

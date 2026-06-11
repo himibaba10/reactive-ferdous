@@ -4,7 +4,7 @@ import { db } from '../firebase';
 import Heading from '../ui/Heading';
 import { ProjectImages } from './ProjectImages';
 
-const DesignGallery = ({ category, title = "Featured Work", description = "A selection of my recent projects in this area." }) => {
+const DesignGallery = ({ category, title = "Featured Work", description = "A selection of our recent projects in this area." }) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 

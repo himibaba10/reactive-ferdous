@@ -3,26 +3,30 @@ import Heading from "../ui/Heading";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const faqs = [
+const defaultFaqs = [
   {
     question: "How long does it take to build a website/app?",
     answer: "The timeline depends entirely on the complexity of your project. A standard landing page might take 1-2 weeks, while a full-scale web application could take 1-3 months. We establish a clear timeline during our discovery call."
   },
   {
     question: "What is your pricing structure?",
-    answer: "My pricing is project-based and depends on the scope, features, and complexity of what we are building. I prioritize high-quality, scalable code that delivers a strong ROI for your business."
+    answer: "our pricing is project-based and depends on the scope, features, and complexity of what we are building. We prioritize high-quality, scalable code that delivers a strong ROI for your business."
   },
   {
     question: "What if I don't have a design ready?",
-    answer: "No problem at all! I offer complete UI/UX implementation services. If you need a design from scratch, we can work together to create a stunning interface before development begins."
+    answer: "No problem at all! We offer complete UI/UX implementation services. If you need a design from scratch, we can work together to create a stunning interface before development begins."
   },
   {
     question: "Do you offer ongoing support after launch?",
-    answer: "Absolutely. I provide post-launch support and maintenance packages to ensure your application stays fast, secure, and up-to-date with the latest technologies."
+    answer: "Absolutely. We provide post-launch support and maintenance packages to ensure your application stays fast, secure, and up-to-date with the latest technologies."
   }
 ];
 
-const FAQ = () => {
+const FAQ = ({ 
+  faqs = defaultFaqs, 
+  title = "Frequently Asked Questions", 
+  description = "Got questions? We've got answers. Here are some of the most common things clients ask before we start working together." 
+}) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFaq = (index) => {
@@ -49,9 +53,9 @@ const FAQ = () => {
         }}
       />
       <div className="text-center mb-16">
-        <Heading className="text-4xl sm:text-6xl mb-6">Frequently Asked Questions</Heading>
+        <Heading className="text-4xl sm:text-6xl mb-6">{title}</Heading>
         <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-          Got questions? I've got answers. Here are some of the most common things clients ask before we start working together.
+          {description}
         </p>
       </div>
 

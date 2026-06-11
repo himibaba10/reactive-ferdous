@@ -19,7 +19,7 @@ const FloatingWhatsApp = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const whatsappMessage = encodeURIComponent("Hi Ferdous, I was looking at your portfolio and I'd like to discuss a project!");
+  const whatsappMessage = encodeURIComponent("Hi Team, I was looking at your portfolio and I'd like to discuss a project!");
   const whatsappUrl = `https://wa.me/8801997722621?text=${whatsappMessage}`;
 
   return (

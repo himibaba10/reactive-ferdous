@@ -22,7 +22,7 @@ const Portfolio = () => {
           Featured Projects
         </Heading>
         <p className="text-zinc-400 max-w-2xl mx-auto text-lg mb-10">
-          Take a look at how I've helped businesses scale and improve their digital presence with custom-built solutions.
+          Take a look at how we've helped businesses scale and improve their digital presence with custom-built solutions.
         </p>
         
         {/* Tabs */}

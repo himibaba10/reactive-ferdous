@@ -8,7 +8,7 @@ const HeroInfo = () => {
     <div className="text-center flex flex-col items-center px-4">
       <h1 className="text-2xl sm:text-5xl lg:text-7xl leading-tight flex flex-col items-center">
         <Heading as="span" className="text-5xl mb-3 sm:mb-0 sm:text-7xl text-secondary leading-snug max-w-4xl">
-          I Build Web Apps That
+          We Build Web Apps That
         </Heading>
         <motion.div
           className="text-nowrap mx-auto py-3"
@@ -28,7 +28,7 @@ const HeroInfo = () => {
       </h1>
       
       <p className="mt-6 max-w-2xl text-zinc-400 text-lg sm:text-xl">
-        Stop losing customers to slow, outdated websites. I specialize in crafting modern, high-performance web solutions designed to convert visitors into paying clients.
+        Stop losing customers to slow, outdated websites. We specialize in crafting modern, high-performance web solutions designed to convert visitors into paying clients.
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row gap-6 items-center justify-center">

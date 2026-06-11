@@ -32,7 +32,7 @@ const Reviews = () => {
       <div className="text-center mb-16 relative z-10">
         <Heading className="text-4xl sm:text-6xl mb-4">Client Success Stories</Heading>
         <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-          Don't just take my word for it. Check out what my clients have to say about the results we've achieved together.
+          Don't just take our word for it. Check out what our clients have to say about the results we've achieved together.
         </p>
       </div>
 

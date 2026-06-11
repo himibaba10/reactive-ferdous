@@ -24,7 +24,7 @@ const Popup = () => {
     localStorage.setItem("hasSeenDiscountPopup", "true");
   };
 
-  const whatsappMessage = encodeURIComponent("Hi Ferdous, I'd like to claim my 50% discount for my first project!");
+  const whatsappMessage = encodeURIComponent("Hi Team, I'd like to claim my 50% discount for my first project!");
   const whatsappUrl = `https://wa.me/8801997722621?text=${whatsappMessage}`;
 
   return (
@@ -54,7 +54,7 @@ const Popup = () => {
             </h2>
             
             <p className="text-zinc-400 mb-8 leading-relaxed">
-              As a first-time client, I want to prove my value to you. Let's build your dream project at half the cost. <strong className="text-white">Valid for the next 2 clients only.</strong>
+              As a first-time client, We want to prove our value to you. Let's build your dream project at half the cost. <strong className="text-white">Valid for the next 2 clients only.</strong>
             </p>
 
             <PrimaryButton

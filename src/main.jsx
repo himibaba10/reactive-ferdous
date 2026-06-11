@@ -13,6 +13,7 @@ import WebDevelopment from "./pages/WebDevelopment.jsx";
 import GraphicDesign from "./pages/GraphicDesign.jsx";
 import FigmaDesign from "./pages/FigmaDesign.jsx";
 import LogoDesign from "./pages/LogoDesign.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         element: <LogoDesign />,
       },
     ]
+  },
+  {
+    path: "/dashboard/himibaba10",
+    element: <Dashboard />,
   },
   {
     path: "/admin/add-project",

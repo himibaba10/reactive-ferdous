@@ -11,12 +11,12 @@ const steps = [
   {
     number: "02",
     title: "Development",
-    description: "I get to work building your custom solution. You'll receive regular updates and prototypes to ensure we are perfectly aligned."
+    description: "We get to work building your custom solution. You'll receive regular updates and prototypes to ensure we are perfectly aligned."
   },
   {
     number: "03",
     title: "Launch & Support",
-    description: "We deploy your blazing-fast application to the world. I also provide post-launch support to guarantee everything runs flawlessly."
+    description: "We deploy your blazing-fast application to the world. We also provide post-launch support to guarantee everything runs flawlessly."
   }
 ];
 

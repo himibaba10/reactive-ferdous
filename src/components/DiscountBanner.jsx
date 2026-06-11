@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { MdLocalOffer } from "react-icons/md";
 
 const DiscountBanner = ({ serviceName = "this service" }) => {
-  const message = `Hi Ferdous, I'm interested in ${serviceName} and would like to claim the 50% discount for my first service!`;
+  const message = `Hi Team, I'm interested in ${serviceName} and would like to claim the 50% discount for my first service!`;
   const whatsappUrl = `https://wa.me/8801997722621?text=${encodeURIComponent(message)}`;
 
   return (
