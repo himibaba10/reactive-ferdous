@@ -19,6 +19,30 @@
     </script>
     <link rel="icon" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Self-hosted font preloads (critical latin subsets) -->
+    <link
+      rel="preload"
+      href="/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/bebas-neue-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <!-- LCP image: start download with HTML, not after React mounts -->
+    <link
+      rel="preload"
+      href="/hero-main.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <link rel="canonical" href="https://reactive-ferdous.netlify.app/" />
     <meta name="robots" content="index, follow" />
     <meta

@@ -1,5 +1,6 @@
-import heroMainImg from "../assets/Hero main image.png";
 import { motion } from "framer-motion";
+
+const HERO_IMG = "/hero-main.webp";
 
 const HeroImage = () => {
   return (
@@ -12,8 +13,12 @@ const HeroImage = () => {
       />
       <div className="min-h-[410px] sm:min-h-[577px]">
         <img
-          src={heroMainImg}
+          src={HERO_IMG}
           alt="Ferdous Ahmed - Freelance WordPress Developer"
+          width={433}
+          height={577}
+          fetchPriority="high"
+          decoding="async"
           className="mx-auto w-auto relative translate-y-3"
         />
       </div>
