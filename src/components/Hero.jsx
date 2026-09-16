@@ -1,4 +1,4 @@
-import numberBackground from '../assets/Numbers background.png';
+import numberBackground from '../assets/Numbers background.webp';
 import HeroImage from './HeroImage';
 import HeroInfo from './HeroInfo';
 import HeroLeftImage from './HeroLeftImage';
