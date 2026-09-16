@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdDelete, MdEdit, MdCheck, MdClose } from 'react-icons/md';
 import { useAdminLogos } from '../hooks/useAdminLogos';
+import SEO from './SEO';
 
 const AdminLogos = () => {
   const {
@@ -22,6 +23,12 @@ const AdminLogos = () => {
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center'>
+      <SEO
+        title="Logos Admin | Ferdous"
+        description="Private logos admin."
+        path="/admin/add-logo"
+        noindex
+      />
       <div className='w-full max-w-4xl'>
         <h1 className='text-3xl font-bold mb-8 text-zinc-900 dark:text-white text-center'>Manage Partner Logos</h1>
         

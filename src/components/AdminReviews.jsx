@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAdminReviews } from '../hooks/useAdminReviews';
+import SEO from './SEO';
 
 const AdminReviews = () => {
   const {
@@ -14,6 +15,12 @@ const AdminReviews = () => {
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center justify-center'>
+      <SEO
+        title="Reviews Admin | Ferdous"
+        description="Private reviews admin."
+        path="/admin/add-reviews"
+        noindex
+      />
       <div className='w-full max-w-xl bg-white dark:bg-zinc-800 rounded-xl shadow-lg p-8 my-8'>
         <h1 className='text-3xl font-bold mb-6 text-zinc-900 dark:text-white'>Add Review Image</h1>
         <p className='text-zinc-600 dark:text-zinc-400 mb-8'>Upload a screenshot to your public/reviews folder and paste the local path (or external URL) here.</p>

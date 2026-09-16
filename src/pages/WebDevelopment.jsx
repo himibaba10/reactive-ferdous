@@ -44,6 +44,7 @@ const WebDevelopment = () => {
       <SEO
         title='Web Development | Custom Apps & WordPress | Ferdous'
         description='We build lightning-fast, highly-converting custom web applications and lead-generation WordPress sites optimized for performance and SEO.'
+        path='/services/web-development'
       />
 
       <ServiceHero

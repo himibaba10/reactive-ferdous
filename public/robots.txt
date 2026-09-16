@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin/
+Disallow: /dashboard/
+
 Sitemap: https://reactive-ferdous.netlify.app/sitemap.xml

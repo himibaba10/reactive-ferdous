@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Heading from '../ui/Heading';
 import { MdWeb, MdRateReview, MdOutlineImage, MdDraw } from 'react-icons/md';
+import SEO from '../components/SEO';
 
 const Dashboard = () => {
   const adminLinks = [
@@ -33,6 +34,12 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950 py-20 px-4">
+      <SEO
+        title="Admin Dashboard | Ferdous"
+        description="Private admin dashboard."
+        path="/dashboard/himibaba10"
+        noindex
+      />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <Heading className="text-4xl sm:text-6xl mb-4">Admin Dashboard</Heading>

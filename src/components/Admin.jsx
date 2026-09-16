@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAdminProjects } from '../hooks/useAdminProjects';
+import SEO from './SEO';
 
 const Admin = () => {
   const {
@@ -19,6 +20,12 @@ const Admin = () => {
 
   return (
     <div className='min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8 flex flex-col items-center justify-center'>
+      <SEO
+        title="Portfolio Admin | Ferdous"
+        description="Private portfolio admin."
+        path="/admin/add-project"
+        noindex
+      />
       <div className='w-full max-w-4xl bg-white dark:bg-zinc-800 rounded-xl shadow-lg p-8'>
         <h1 className='text-3xl font-bold mb-6 text-zinc-900 dark:text-white'>Portfolio Admin</h1>
         <p className='text-zinc-600 dark:text-zinc-400 mb-8'>{editingId ? 'Edit an existing project.' : 'Add a new project to your portfolio database.'}</p>

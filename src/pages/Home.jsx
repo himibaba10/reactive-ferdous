@@ -15,8 +15,9 @@ function Home() {
   return (
     <>
       <SEO 
-        title="Ferdous | Web Developer & Designer" 
-        description="We partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design." 
+        title="Ferdous Ahmed | Web Developer & Designer" 
+        description="We partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design."
+        path="/"
       />
 
       {/* Above the fold (eager loaded) */}
