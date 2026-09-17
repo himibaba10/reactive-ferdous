@@ -14,6 +14,9 @@ const HeroLeftImage = () => {
       className="absolute"
       src={clientReviewImage}
       alt="Hero left image"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
     />
   );
 };

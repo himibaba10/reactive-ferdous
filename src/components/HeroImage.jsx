@@ -1,25 +1,26 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-const HERO_IMG = "/hero-main.webp";
+const HERO_IMG = '/hero-main.webp';
 
 const HeroImage = () => {
   return (
-    <div className="relative inline-block">
+    <div className='relative inline-block'>
       <motion.div
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="w-[650px] aspect-square absolute bottom-[5px] -left-24 top-14 bg-secondary rounded-full blur-3xl opacity-25"
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        className='w-[650px] aspect-square absolute bottom-[5px] -left-24 top-14 bg-secondary rounded-full blur-3xl opacity-25'
       />
-      <div className="min-h-[410px] sm:min-h-[577px]">
+      <div className='min-h-[410px] sm:min-h-[577px]'>
+        {/* Sole LCP candidate: eager + high priority (web.dev / Vite LCP guidance) */}
         <img
           src={HERO_IMG}
-          alt="Ferdous Ahmed - Freelance WordPress Developer"
+          alt='Ferdous Ahmed - Freelance WordPress Developer'
           width={433}
           height={577}
-          fetchpriority="high"
-          decoding="async"
-          className="mx-auto w-auto relative translate-y-3"
+          fetchpriority='high'
+          decoding='sync'
+          className='mx-auto w-auto relative translate-y-3'
         />
       </div>
     </div>

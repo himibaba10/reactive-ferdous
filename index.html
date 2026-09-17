@@ -3,20 +3,6 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-QDZ7CKLE3F"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-QDZ7CKLE3F');
-    </script>
     <link rel="icon" href="/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -35,7 +21,7 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- LCP: hero portrait must be discoverable in the initial HTML -->
+    <!-- LCP image: discoverable in initial HTML (web.dev / Vite SPA guidance) -->
     <link
       rel="preload"
       href="/hero-main.webp"
@@ -119,5 +105,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Defer analytics so it does not compete with LCP bandwidth -->
+    <script>
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QDZ7CKLE3F';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-QDZ7CKLE3F');
+      });
+    </script>
   </body>
 </html>

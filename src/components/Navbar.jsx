@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/Logo.png';
+import logo from '../assets/logo.webp';
 import { useNavbar } from '../hooks/useNavbar';
 import ContactButton from '../ui/ContactButton';
 import Hamburger from '../ui/Hamburger';
