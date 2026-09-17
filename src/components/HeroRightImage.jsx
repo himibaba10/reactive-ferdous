@@ -10,6 +10,8 @@ const HeroRightImage = () => {
       className='absolute top-64 sm:top-20'
       src={expertiseImg}
       alt='Hero right expertise image'
+      width={405}
+      height={238}
       loading='lazy'
       decoding='async'
       fetchpriority='low'

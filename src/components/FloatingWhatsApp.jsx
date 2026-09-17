@@ -40,7 +40,7 @@ const FloatingWhatsApp = () => {
           {/* Subtle pulse ring behind the button */}
           <div className="absolute inset-0 rounded-full border-2 border-[#25D366] animate-ping opacity-75 group-hover:hidden"></div>
           
-          <FaWhatsapp size={35} className="relative z-10" />
+          <FaWhatsapp size={35} className="relative z-10" aria-hidden="true" focusable="false" />
         </motion.a>
       )}
     </AnimatePresence>

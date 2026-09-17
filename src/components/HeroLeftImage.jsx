@@ -13,6 +13,8 @@ const HeroLeftImage = () => {
       className='absolute'
       src={clientReviewImage}
       alt='Hero left image'
+      width={404}
+      height={238}
       loading='lazy'
       decoding='async'
       fetchpriority='low'

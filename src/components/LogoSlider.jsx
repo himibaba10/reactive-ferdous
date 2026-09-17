@@ -26,7 +26,10 @@ const LogoSlider = () => {
               <img
                 src={url}
                 alt='Partner Logo'
+                width={160}
+                height={48}
                 loading='lazy'
+                decoding='async'
                 className='max-h-12 w-auto object-contain filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer'
               />
             </div>

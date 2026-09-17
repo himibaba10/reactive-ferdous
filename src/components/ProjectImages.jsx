@@ -22,7 +22,10 @@ export const ProjectImages = ({ projects }) => {
               className='w-full h-full object-cover object-top group-hover:object-[0_100%] transition-all duration-[3s] ease-in-out'
               src={slide.img}
               alt={slide.title}
+              width={400}
+              height={250}
               loading='lazy'
+              decoding='async'
             />
           </div>
 

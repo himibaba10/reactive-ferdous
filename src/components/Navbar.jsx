@@ -18,7 +18,14 @@ const Navbar = () => {
               window.scrollTo(0, 0);
             }}
           >
-            <img className='w-32 sm:w-44' src={logo} alt='Logo' />
+            <img
+              className='w-32 sm:w-44 h-auto'
+              src={logo}
+              alt='Ferdous Ahmed logo'
+              width={450}
+              height={129}
+              decoding='async'
+            />
           </Link>
         </div>
 

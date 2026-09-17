@@ -1,0 +1,27 @@
+# Ferdous Ahmed Portfolio
+
+> Freelance web developer and designer specializing in WordPress, custom web apps, graphic design, Figma UI/UX, and logo design.
+
+Portfolio site for Ferdous Ahmed. Use the links below to discover services, contact details, and public pages.
+
+## Pages
+
+- [Home](https://portfolio.reactiveferdous.com/): Main portfolio landing page
+- [Web Development](https://portfolio.reactiveferdous.com/services/web-development): Custom apps, WordPress, and SEO-focused websites
+- [Graphic Design](https://portfolio.reactiveferdous.com/services/graphic-design): Branding, marketing, and visual identity work
+- [Figma UI/UX Design](https://portfolio.reactiveferdous.com/services/figma-design): Interface design and interactive prototypes
+- [Logo Design](https://portfolio.reactiveferdous.com/services/logo-design): Custom brand marks and logotypes
+- [Sitemap](https://portfolio.reactiveferdous.com/sitemap.xml): Machine-readable list of public URLs
+
+## Contact
+
+- [WhatsApp](https://wa.me/8801997722621): Primary contact for project inquiries
+- [Email](mailto:himibaba10@gmail.com): himibaba10@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/ferdous-ahmed-6535b0202/): Professional profile
+- [Fiverr](https://www.fiverr.com/ferdoushimel): Freelance services profile
+
+## Optional
+
+- [Facebook](https://www.facebook.com/ferdoushimel10): Social profile
+- [Telegram](https://t.me/himibaba10): Messaging contact
+- [GitHub](https://www.github.com/himibaba10): Code samples and open work

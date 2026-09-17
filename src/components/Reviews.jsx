@@ -42,12 +42,15 @@ const Reviews = () => {
             key={currentIndex}
             src={reviews[currentIndex].img}
             alt="Client Review"
+            width={800}
+            height={600}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.5 }}
             loading="lazy"
-            className="w-full max-h-[600px] object-contain rounded-xl shadow-2xl"
+            decoding="async"
+            className="w-full max-h-[600px] h-auto object-contain rounded-xl shadow-2xl"
           />
         </AnimatePresence>
       </div>
