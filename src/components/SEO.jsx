@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const SITE_URL = 'https://reactive-ferdous.netlify.app';
+export const SITE_URL = 'https://portfolio.reactiveferdous.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const setMetaByName = (name, content) => {
