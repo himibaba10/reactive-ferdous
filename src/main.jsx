@@ -2,20 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
-import Admin from "./components/Admin.jsx";
-import AdminReviews from "./components/AdminReviews.jsx";
-import AdminLogos from "./components/AdminLogos.jsx";
-import AdminDesigns from "./components/AdminDesigns.jsx";
-import AdminLogoPortfolio from "./components/AdminLogoPortfolio.jsx";
-import AdminGraphicPortfolio from "./components/AdminGraphicPortfolio.jsx";
+import Home from "./pages/Home.jsx";
 import "./index.css";
 
-import Home from "./pages/Home.jsx";
-import WebDevelopment from "./pages/WebDevelopment.jsx";
-import GraphicDesign from "./pages/GraphicDesign.jsx";
-import FigmaDesign from "./pages/FigmaDesign.jsx";
-import LogoDesign from "./pages/LogoDesign.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+/** Map default-export pages to React Router's route.lazy shape */
+const lazyPage = (importer) => async () => {
+  const mod = await importer();
+  return { Component: mod.default };
+};
 
 const router = createBrowserRouter([
   {
@@ -23,54 +17,54 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
-        path: "/services/web-development",
-        element: <WebDevelopment />,
+        path: "services/web-development",
+        lazy: lazyPage(() => import("./pages/WebDevelopment.jsx")),
       },
       {
-        path: "/services/graphic-design",
-        element: <GraphicDesign />,
+        path: "services/graphic-design",
+        lazy: lazyPage(() => import("./pages/GraphicDesign.jsx")),
       },
       {
-        path: "/services/figma-design",
-        element: <FigmaDesign />,
+        path: "services/figma-design",
+        lazy: lazyPage(() => import("./pages/FigmaDesign.jsx")),
       },
       {
-        path: "/services/logo-design",
-        element: <LogoDesign />,
+        path: "services/logo-design",
+        lazy: lazyPage(() => import("./pages/LogoDesign.jsx")),
       },
-    ]
+    ],
   },
   {
     path: "/dashboard/himibaba10",
-    element: <Dashboard />,
+    lazy: lazyPage(() => import("./pages/Dashboard.jsx")),
   },
   {
     path: "/admin/add-project",
-    element: <Admin />,
+    lazy: lazyPage(() => import("./components/Admin.jsx")),
   },
   {
     path: "/admin/add-reviews",
-    element: <AdminReviews />,
+    lazy: lazyPage(() => import("./components/AdminReviews.jsx")),
   },
   {
     path: "/admin/add-logo",
-    element: <AdminLogos />,
+    lazy: lazyPage(() => import("./components/AdminLogos.jsx")),
   },
   {
     path: "/admin/add-design",
-    element: <AdminDesigns />,
+    lazy: lazyPage(() => import("./components/AdminDesigns.jsx")),
   },
   {
     path: "/admin/add-logo-portfolio",
-    element: <AdminLogoPortfolio />,
+    lazy: lazyPage(() => import("./components/AdminLogoPortfolio.jsx")),
   },
   {
     path: "/admin/add-graphic-portfolio",
-    element: <AdminGraphicPortfolio />,
+    lazy: lazyPage(() => import("./components/AdminGraphicPortfolio.jsx")),
   },
 ]);
 

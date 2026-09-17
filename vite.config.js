@@ -64,10 +64,12 @@ export default defineConfig({
     cssCodeSplit: false,
     rollupOptions: {
       output: {
+        // Keep React/Router split for caching. Do NOT put firebase in object-form
+        // manualChunks — that can force it onto the initial page (Vite #5189).
+        // Firebase is loaded only via dynamic imports (LogoSlider, Reviews, etc.).
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           framer: ['framer-motion'],
-          firebase: ['firebase/app', 'firebase/firestore'],
         },
       },
     },
