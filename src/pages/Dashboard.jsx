@@ -1,69 +1,91 @@
-import React from 'react';
+import { MdBrush, MdDraw, MdOutlineImage, MdOutlineWorkspacePremium, MdRateReview, MdWeb } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import Heading from '../ui/Heading';
-import { MdWeb, MdRateReview, MdOutlineImage, MdDraw } from 'react-icons/md';
 import SEO from '../components/SEO';
+import Heading from '../ui/Heading';
 
 const Dashboard = () => {
   const adminLinks = [
     {
       title: 'Web Dev Projects',
       description: 'Manage your portfolio of web development projects.',
-      icon: <MdWeb className="text-4xl mb-4 text-secondary" />,
-      path: '/admin/add-project'
+      icon: <MdWeb className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-project',
     },
     {
-      title: 'Graphic Designs',
-      description: 'Upload new graphic design assets and banners.',
-      icon: <MdOutlineImage className="text-4xl mb-4 text-secondary" />,
-      path: '/admin/add-design'
+      title: 'Graphic Portfolio',
+      description: 'Add graphic design work shown on the Graphic Design service page.',
+      icon: <MdBrush className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-graphic-portfolio',
     },
     {
-      title: 'Logo Designs',
-      description: 'Add new brand marks and logos to your portfolio.',
-      icon: <MdDraw className="text-4xl mb-4 text-secondary" />,
-      path: '/admin/add-logo'
+      title: 'Figma Designs',
+      description: 'Upload Figma UI/UX portfolio pieces.',
+      icon: <MdOutlineImage className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-design',
+    },
+    {
+      title: 'Logo Portfolio',
+      description: 'Add logo design work shown on the Logo Design service page.',
+      icon: <MdOutlineWorkspacePremium className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-logo-portfolio',
+    },
+    {
+      title: 'Partner Logos',
+      description: 'Manage client logos in the homepage “Trusted by” slider.',
+      icon: <MdDraw className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-logo',
     },
     {
       title: 'Client Reviews',
       description: 'Manage testimonials and client success stories.',
-      icon: <MdRateReview className="text-4xl mb-4 text-secondary" />,
-      path: '/admin/add-reviews'
-    }
+      icon: <MdRateReview className='text-4xl mb-4 text-secondary' />,
+      path: '/admin/add-reviews',
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 py-20 px-4">
+    <div className='min-h-screen bg-zinc-950 py-20 px-4'>
       <SEO
-        title="Admin Dashboard | Ferdous"
-        description="Private admin dashboard."
-        path="/dashboard/himibaba10"
+        title='Admin Dashboard | Ferdous'
+        description='Private admin dashboard.'
+        path='/dashboard/himibaba10'
         noindex
       />
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <Heading className="text-4xl sm:text-6xl mb-4">Admin Dashboard</Heading>
-          <p className="text-zinc-400 text-lg">Select a category below to manage your content.</p>
+      <div className='max-w-5xl mx-auto'>
+        <div className='text-center mb-16'>
+          <Heading className='text-4xl sm:text-6xl mb-4'>
+            Admin Dashboard
+          </Heading>
+          <p className='text-zinc-400 text-lg'>
+            Select a category below to manage your content.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           {adminLinks.map((link, index) => (
-            <Link 
-              key={index} 
+            <Link
+              key={index}
               to={link.path}
-              className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-800 hover:border-secondary/50 transition-all duration-300 group shadow-lg"
+              className='bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-800 hover:border-secondary/50 transition-all duration-300 group shadow-lg'
             >
-              <div className="flex flex-col">
+              <div className='flex flex-col'>
                 {link.icon}
-                <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">{link.title}</h2>
-                <p className="text-zinc-400 leading-relaxed">{link.description}</p>
+                <h2 className='text-2xl font-bold text-white mb-2 group-hover:text-secondary transition-colors'>
+                  {link.title}
+                </h2>
+                <p className='text-zinc-400 leading-relaxed'>
+                  {link.description}
+                </p>
               </div>
             </Link>
           ))}
         </div>
-        
-        <div className="mt-16 text-center">
-          <Link to="/" className="text-zinc-500 hover:text-white transition-colors border border-zinc-800 rounded-full px-6 py-2 inline-block hover:bg-zinc-900">
+
+        <div className='mt-16 text-center'>
+          <Link
+            to='/'
+            className='text-zinc-500 hover:text-white transition-colors border border-zinc-800 rounded-full px-6 py-2 inline-block hover:bg-zinc-900'
+          >
             &larr; Back to Live Website
           </Link>
         </div>

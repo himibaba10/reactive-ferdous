@@ -6,6 +6,8 @@ import Admin from "./components/Admin.jsx";
 import AdminReviews from "./components/AdminReviews.jsx";
 import AdminLogos from "./components/AdminLogos.jsx";
 import AdminDesigns from "./components/AdminDesigns.jsx";
+import AdminLogoPortfolio from "./components/AdminLogoPortfolio.jsx";
+import AdminGraphicPortfolio from "./components/AdminGraphicPortfolio.jsx";
 import "./index.css";
 
 import Home from "./pages/Home.jsx";
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
   {
     path: "/admin/add-design",
     element: <AdminDesigns />,
+  },
+  {
+    path: "/admin/add-logo-portfolio",
+    element: <AdminLogoPortfolio />,
+  },
+  {
+    path: "/admin/add-graphic-portfolio",
+    element: <AdminGraphicPortfolio />,
   },
 ]);
 

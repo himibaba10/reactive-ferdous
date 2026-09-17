@@ -3,7 +3,9 @@ import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, where } 
 import { db } from '../firebase';
 import { uploadImageToCloudinary } from '../utils/cloudinary';
 
-export const useAdminDesigns = () => {
+const LOGO_CATEGORY = 'Logo Design';
+
+export const useAdminLogoPortfolio = () => {
   const [formData, setFormData] = useState({
     title: '',
   });
@@ -15,12 +17,15 @@ export const useAdminDesigns = () => {
 
   const fetchProjects = async () => {
     try {
-      const q = query(collection(db, 'projects'), where('category', '==', 'Figma Design'));
+      const q = query(collection(db, 'projects'), where('category', '==', LOGO_CATEGORY));
       const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const data = querySnapshot.docs.map((docSnap) => ({
+        id: docSnap.id,
+        ...docSnap.data(),
+      }));
       setProjects(data);
     } catch (error) {
-      console.error("Error fetching projects:", error);
+      console.error('Error fetching logo portfolio:', error);
     }
   };
 
@@ -43,31 +48,29 @@ export const useAdminDesigns = () => {
 
   const handleCancelEdit = () => {
     setEditingId(null);
-    setFormData({
-      title: '',
-    });
+    setFormData({ title: '' });
     setSelectedFile(null);
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this design project?")) return;
+    if (!window.confirm('Are you sure you want to delete this logo portfolio item?')) return;
     try {
       await deleteDoc(doc(db, 'projects', id));
-      setMessage('Project deleted successfully!');
+      setMessage('Logo deleted successfully!');
       fetchProjects();
     } catch (error) {
-      console.error('Error deleting project: ', error);
-      setMessage('Error deleting project.');
+      console.error('Error deleting logo: ', error);
+      setMessage('Error deleting logo.');
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!editingId && !selectedFile) {
-      setMessage('Please select an image file for the project.');
+      setMessage('Please select an image file for the logo.');
       return;
     }
-    
+
     setLoading(true);
     setMessage('');
 
@@ -79,9 +82,7 @@ export const useAdminDesigns = () => {
 
       const projectData = {
         title: formData.title,
-        category: 'Figma Design',
-        // Since we are inserting into the 'projects' collection, we should set defaults for the missing fields 
-        // to prevent rendering errors on the Web Development portfolio if it accidentally fetches these.
+        category: LOGO_CATEGORY,
         live: '',
         frontendCodeLink: '',
         backendCodeLink: '',
@@ -94,22 +95,20 @@ export const useAdminDesigns = () => {
 
       if (editingId) {
         await updateDoc(doc(db, 'projects', editingId), projectData);
-        setMessage('Project updated successfully!');
+        setMessage('Logo portfolio updated successfully!');
         setEditingId(null);
       } else {
         await addDoc(collection(db, 'projects'), projectData);
-        setMessage('Project added successfully!');
+        setMessage('Logo portfolio added successfully!');
       }
 
-      setFormData({
-        title: '',
-      });
+      setFormData({ title: '' });
       setSelectedFile(null);
-      e.target.reset(); // clear file input
+      e.target.reset();
       fetchProjects();
     } catch (error) {
-      console.error('Error saving document: ', error);
-      setMessage(`Error saving project: ${error.message || 'Unknown error'}`);
+      console.error('Error saving logo portfolio: ', error);
+      setMessage(`Error saving logo: ${error.message || 'Unknown error'}`);
     } finally {
       setLoading(false);
     }
@@ -127,6 +126,6 @@ export const useAdminDesigns = () => {
     handleEditStart,
     handleCancelEdit,
     handleDelete,
-    handleSubmit
+    handleSubmit,
   };
 };
