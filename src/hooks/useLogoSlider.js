@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
+import { listDocuments } from '../utils/firestoreRest';
 
 export const useLogoSlider = () => {
   const [logos, setLogos] = useState([]);
@@ -9,9 +8,8 @@ export const useLogoSlider = () => {
   useEffect(() => {
     const fetchLogos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'logos'));
-        const data = querySnapshot.docs.map((doc) => doc.data().imgUrl);
-        setLogos(data);
+        const data = await listDocuments('logos');
+        setLogos(data.map((doc) => doc.imgUrl).filter(Boolean));
       } catch (error) {
         console.error('Error fetching logos:', error);
       } finally {

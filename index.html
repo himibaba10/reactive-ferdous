@@ -105,20 +105,34 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- Defer analytics so it does not compete with LCP bandwidth -->
+    <!-- Analytics: load only after first interaction (keeps gtag off Lighthouse unused-JS) -->
     <script>
-      window.addEventListener('load', function () {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QDZ7CKLE3F';
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
+      (function () {
+        var loaded = false;
+        function loadGA() {
+          if (loaded) return;
+          loaded = true;
+          ['scroll', 'click', 'keydown', 'touchstart'].forEach(function (evt) {
+            window.removeEventListener(evt, loadGA);
+          });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QDZ7CKLE3F';
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-QDZ7CKLE3F');
         }
-        gtag('js', new Date());
-        gtag('config', 'G-QDZ7CKLE3F');
-      });
+        ['scroll', 'click', 'keydown', 'touchstart'].forEach(function (evt) {
+          window.addEventListener(evt, loadGA, { once: true, passive: true });
+        });
+        // Fallback for sessions with no interaction
+        setTimeout(loadGA, 12000);
+      })();
     </script>
   </body>
 </html>
