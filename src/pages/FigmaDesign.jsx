@@ -155,7 +155,7 @@ const FigmaDesign = () => {
 
       <DesignGallery category='Figma Design' title='UI/UX Prototypes' description='A showcase of wireframes, mockups, and interactive prototypes.' />
 
-      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-500'>Loading...</div>}>
+      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-400'>Loading...</div>}>
         <Reviews />
         <FAQ 
           faqs={figmaFaqs} 

@@ -69,7 +69,7 @@ const Popup = () => {
             
             <button 
               onClick={closePopup}
-              className="block w-full text-center mt-6 text-sm text-zinc-500 hover:text-zinc-300 underline underline-offset-4 transition-colors"
+              className="block w-full text-center mt-6 text-sm text-zinc-400 hover:text-zinc-200 underline underline-offset-4 transition-colors"
             >
               No thanks, I prefer paying full price
             </button>

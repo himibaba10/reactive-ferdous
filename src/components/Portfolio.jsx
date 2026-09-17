@@ -48,7 +48,7 @@ const Portfolio = () => {
       <div className="w-full">
         {loading ? (
           <div className="flex justify-center items-center min-h-[200px]">
-            <p className="text-xl text-zinc-500 animate-pulse">Loading projects...</p>
+            <p className="text-xl text-zinc-400 animate-pulse">Loading projects...</p>
           </div>
         ) : (
           <ProjectImages projects={filteredProjects} />

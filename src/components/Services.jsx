@@ -86,8 +86,8 @@ const Services = () => {
               onClick={() => window.scrollTo(0, 0)}
               className="inline-flex items-center text-secondary text-sm font-semibold group/link mt-auto w-fit"
             >
-              Learn More 
-              <MdArrowForward className="ml-2 group-hover/link:translate-x-1 transition-transform" />
+              Explore {service.title}
+              <MdArrowForward className="ml-2 group-hover/link:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
           </motion.div>
         ))}

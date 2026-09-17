@@ -84,7 +84,7 @@ const Dashboard = () => {
         <div className='mt-16 text-center'>
           <Link
             to='/'
-            className='text-zinc-500 hover:text-white transition-colors border border-zinc-800 rounded-full px-6 py-2 inline-block hover:bg-zinc-900'
+            className='text-zinc-400 hover:text-white transition-colors border border-zinc-800 rounded-full px-6 py-2 inline-block hover:bg-zinc-900'
           >
             &larr; Back to Live Website
           </Link>

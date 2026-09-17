@@ -129,7 +129,7 @@ const WebDevelopment = () => {
 
       <ServiceCards title='What We Build' description='From high-converting landing pages to complex web applications, We have you covered.' cards={cards} />
 
-      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-500'>Loading...</div>}>
+      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-400'>Loading...</div>}>
         <Process />
         <Skills />
         <Stats />

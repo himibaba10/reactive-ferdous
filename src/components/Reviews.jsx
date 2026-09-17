@@ -16,7 +16,7 @@ const Reviews = () => {
   if (loading) {
     return (
       <section id="reviews" className="section my-20 py-20 w-full bg-zinc-900/30 rounded-3xl relative overflow-hidden flex justify-center items-center min-h-[400px]">
-        <p className="text-xl text-zinc-500 animate-pulse">Loading reviews...</p>
+        <p className="text-xl text-zinc-400 animate-pulse">Loading reviews...</p>
       </section>
     );
   }

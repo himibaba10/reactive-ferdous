@@ -36,13 +36,13 @@ const DesignGallery = ({
       <div className='w-full'>
         {loading ? (
           <div className='flex justify-center items-center min-h-[200px]'>
-            <p className='text-xl text-zinc-500 animate-pulse'>
+            <p className='text-xl text-zinc-400 animate-pulse'>
               Loading gallery...
             </p>
           </div>
         ) : projects.length === 0 ? (
           <div className='flex justify-center items-center min-h-[200px] border border-dashed border-zinc-700 rounded-2xl bg-zinc-900/30'>
-            <p className='text-zinc-500'>
+            <p className='text-zinc-400'>
               No projects uploaded yet in this category.
             </p>
           </div>

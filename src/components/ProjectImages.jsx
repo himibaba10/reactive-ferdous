@@ -2,7 +2,7 @@ export const ProjectImages = ({ projects }) => {
   if (!projects || projects.length === 0) {
     return (
       <div className='flex justify-center items-center w-full min-h-[200px]'>
-        <p className='text-xl text-zinc-500'>
+        <p className='text-xl text-zinc-400'>
           No projects found in this category.
         </p>
       </div>

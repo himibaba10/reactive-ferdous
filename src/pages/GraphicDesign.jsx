@@ -65,7 +65,7 @@ const GraphicDesign = () => {
 
       <DesignGallery category='Graphic Design' title='Graphic Design Portfolio' description='Explore a selection of our recent branding and graphic design projects.' />
 
-      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-500'>Loading...</div>}>
+      <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-400'>Loading...</div>}>
         <Reviews />
         <Contact />
       </Suspense>

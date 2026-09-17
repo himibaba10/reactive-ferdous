@@ -13,7 +13,7 @@ const FAQ = lazy(() => import('../components/FAQ'));
 const Contact = lazy(() => import('../components/Contact'));
 
 const sectionFallback = (
-  <div className='min-h-[120px] flex items-center justify-center text-zinc-500'>
+  <div className='min-h-[120px] flex items-center justify-center text-zinc-400'>
     Loading...
   </div>
 );
