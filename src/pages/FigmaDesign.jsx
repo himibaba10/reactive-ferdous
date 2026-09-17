@@ -98,7 +98,7 @@ const FigmaDesign = () => {
 
           <div className='flex-1 w-full'>
             <img
-              src='https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=80'
+              src='/images/figma-process.webp'
               alt='Figma UI/UX Design Process'
               className='w-full h-auto lg:h-[500px] object-cover rounded-2xl shadow-[0_0_40px_rgba(64,140,255,0.15)] border border-zinc-700/50'
             />
@@ -117,7 +117,7 @@ const FigmaDesign = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           <div className='bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden group'>
             <div className='h-64 overflow-hidden relative'>
-              <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80" alt="Fintech App Redesign" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
+              <img src="/images/figma-fintech.webp" alt="Fintech App Redesign" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
               <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none'></div>
               <h3 className='absolute bottom-6 left-6 text-2xl font-bold text-white'>Fintech App Redesign</h3>
             </div>
@@ -134,7 +134,7 @@ const FigmaDesign = () => {
           
           <div className='bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden group'>
             <div className='h-64 overflow-hidden relative'>
-              <img src="https://images.unsplash.com/photo-1618788372246-ce5f4ef07130?auto=format&fit=crop&w=800&q=80" alt="SaaS MVP Prototype" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
+              <img src="/images/figma-saas.webp" alt="SaaS MVP Prototype" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
               <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none'></div>
               <h3 className='absolute bottom-6 left-6 text-2xl font-bold text-white'>SaaS MVP Prototype</h3>
             </div>

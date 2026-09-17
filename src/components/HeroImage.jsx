@@ -17,7 +17,7 @@ const HeroImage = () => {
           alt="Ferdous Ahmed - Freelance WordPress Developer"
           width={433}
           height={577}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           className="mx-auto w-auto relative translate-y-3"
         />

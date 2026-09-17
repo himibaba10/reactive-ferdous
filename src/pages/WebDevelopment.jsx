@@ -57,7 +57,7 @@ const WebDevelopment = () => {
           initial={{ left: '-100%', top: '10%', rotate: -15, opacity: 0 }}
           animate={{ left: '3%', top: '15%', rotate: -8, opacity: 1 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80'
+          src='/images/web-dashboard.webp'
           className='absolute w-[240px] h-[160px] object-cover rounded-xl shadow-2xl border-4 border-zinc-800/50 hidden lg:block'
           alt='Dashboard Project'
         />
@@ -66,7 +66,7 @@ const WebDevelopment = () => {
           initial={{ left: '-100%', bottom: '5%', rotate: -20, opacity: 0 }}
           animate={{ left: '5%', bottom: '10%', rotate: -14, opacity: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.2 }}
-          src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80'
+          src='/images/web-analytics.webp'
           className='absolute w-[240px] h-[160px] object-cover rounded-xl shadow-2xl border-4 border-zinc-800/50 hidden lg:block'
           alt='Analytics Project'
         />
@@ -75,7 +75,7 @@ const WebDevelopment = () => {
           initial={{ right: '-100%', top: '15%', rotate: 15, opacity: 0 }}
           animate={{ right: '3%', top: '18%', rotate: 8, opacity: 1 }}
           transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
-          src='https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=400&q=80'
+          src='/images/web-ui.webp'
           className='absolute w-[240px] h-[160px] object-cover rounded-xl shadow-2xl border-4 border-zinc-800/50 hidden lg:block'
           alt='UI Project'
         />
@@ -84,7 +84,7 @@ const WebDevelopment = () => {
           initial={{ right: '-100%', bottom: '5%', rotate: 20, opacity: 0 }}
           animate={{ right: '5%', bottom: '8%', rotate: 12, opacity: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 }}
-          src='https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=400&q=80'
+          src='/images/web-mobile.webp'
           className='absolute w-[240px] h-[160px] object-cover rounded-xl shadow-2xl border-4 border-zinc-800/50 hidden lg:block'
           alt='Mobile Web Project'
         />
@@ -119,7 +119,7 @@ const WebDevelopment = () => {
 
           <div className='flex-1 w-full'>
             <img
-              src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+              src='/images/web-workspace.webp'
               alt='Web Development Workspace'
               className='w-full h-auto lg:h-[500px] object-cover rounded-2xl shadow-[0_0_40px_rgba(64,140,255,0.15)] border border-zinc-700/50'
             />

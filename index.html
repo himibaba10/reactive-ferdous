@@ -35,14 +35,21 @@
       type="font/woff2"
       crossorigin
     />
-    <!-- LCP image: start download with HTML, not after React mounts -->
-    <link
-      rel="preload"
-      href="/hero-main.webp"
-      as="image"
-      type="image/webp"
-      fetchpriority="high"
-    />
+    <!-- LCP image: only preload on the homepage (avoids unused-preload warnings elsewhere) -->
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        if (path === '/' || path === '') {
+          var link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = '/hero-main.webp';
+          link.type = 'image/webp';
+          link.setAttribute('fetchpriority', 'high');
+          document.head.appendChild(link);
+        }
+      })();
+    </script>
     <link rel="canonical" href="https://reactive-ferdous.netlify.app/" />
     <meta name="robots" content="index, follow" />
     <meta

@@ -98,7 +98,7 @@ const LogoDesign = () => {
 
           <div className='flex-1 w-full'>
             <img
-              src='https://images.unsplash.com/photo-1626785773579-c13f6cb02886?auto=format&fit=crop&w=1000&q=80'
+              src='/images/logo-sketching.webp'
               alt='Logo Design Sketching Process'
               className='w-full h-auto lg:h-[500px] object-cover rounded-2xl shadow-[0_0_40px_rgba(64,140,255,0.15)] border border-zinc-700/50'
             />
@@ -117,7 +117,7 @@ const LogoDesign = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           <div className='bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden group'>
             <div className='h-64 overflow-hidden relative'>
-              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80" alt="Tech Startup Rebrand" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
+              <img src="/images/logo-tech-rebrand.webp" alt="Tech Startup Rebrand" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
               <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none'></div>
               <h3 className='absolute bottom-6 left-6 text-2xl font-bold text-white'>Tech Startup Rebrand</h3>
             </div>
@@ -134,7 +134,7 @@ const LogoDesign = () => {
           
           <div className='bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden group'>
             <div className='h-64 overflow-hidden relative'>
-              <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Brand Lift" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
+              <img src="/images/logo-ecommerce-brand.webp" alt="E-Commerce Brand Lift" className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500' />
               <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none'></div>
               <h3 className='absolute bottom-6 left-6 text-2xl font-bold text-white'>E-Commerce Brand Lift</h3>
             </div>
