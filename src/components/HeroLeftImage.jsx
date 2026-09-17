@@ -1,22 +1,21 @@
-import React from "react";
-import clientReviewImage from "../assets/Clietn Review.png";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import clientReviewImage from '../assets/Client Review.webp';
 
 const HeroLeftImage = () => {
   return (
     <motion.img
-      initial={{ left: "-25rem", top: "0px", rotate: -5 }}
-      whileInView={{ left: "-2rem" }}
+      initial={{ left: '-25rem', top: '0px', rotate: -5 }}
+      whileInView={{ left: '-2rem' }}
       transition={{
         duration: 1,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       }}
-      className="absolute"
+      className='absolute'
       src={clientReviewImage}
-      alt="Hero left image"
-      loading="lazy"
-      decoding="async"
-      fetchpriority="low"
+      alt='Hero left image'
+      loading='lazy'
+      decoding='async'
+      fetchpriority='low'
     />
   );
 };
