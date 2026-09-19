@@ -21,11 +21,15 @@ const LogoSlider = () => {
         <div className='absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[rgba(11,17,35,1)] to-transparent z-10 pointer-events-none'></div>
 
         <div className='flex animate-marquee hover:[animation-play-state:paused] items-center'>
-          {duplicatedLogos.map((url, index) => (
+          {duplicatedLogos.map((logo, index) => (
             <div key={index} className='flex items-center justify-center min-w-[200px] px-8'>
               <img
-                src={url}
-                alt='Partner Logo'
+                src={logo.imgUrl}
+                alt={
+                  logo.name
+                    ? `${logo.name} — client of Ferdous Ahmed`
+                    : 'Client company logo of Ferdous Ahmed'
+                }
                 width={160}
                 height={48}
                 loading='lazy'

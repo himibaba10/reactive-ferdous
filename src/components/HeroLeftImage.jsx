@@ -12,7 +12,7 @@ const HeroLeftImage = () => {
       }}
       className='absolute'
       src={clientReviewImage}
-      alt='Hero left image'
+      alt='Client review screenshot from a recent web development project'
       width={404}
       height={238}
       loading='lazy'

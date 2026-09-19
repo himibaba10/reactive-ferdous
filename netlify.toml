@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Store the Playwright browser inside node_modules so Netlify caches it
+  # between deploys instead of re-downloading Chromium (~150 MB) every build.
+  PLAYWRIGHT_BROWSERS_PATH = "0"

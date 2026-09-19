@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 export const SITE_URL = 'https://portfolio.reactiveferdous.com';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 const setMetaByName = (name, content) => {
   let el = document.querySelector(`meta[name="${name}"]`);

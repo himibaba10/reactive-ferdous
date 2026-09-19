@@ -41,7 +41,7 @@ const Reviews = () => {
           <motion.img
             key={currentIndex}
             src={reviews[currentIndex].img}
-            alt="Client Review"
+            alt={`Client testimonial ${currentIndex + 1} of ${reviews.length} for Ferdous Ahmed`}
             width={800}
             height={600}
             initial={{ opacity: 0, x: 50 }}

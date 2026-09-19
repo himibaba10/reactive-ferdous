@@ -26,7 +26,7 @@ const ServiceHero = ({ title, highlightedText, description, children }) => {
             className='text-5xl mb-3 sm:mb-0 sm:text-7xl text-white leading-snug max-w-4xl'
           >
             {title}
-          </Heading>
+          </Heading>{' '}
 
           {highlightedText && (
             <motion.div

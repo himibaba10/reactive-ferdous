@@ -9,7 +9,7 @@ const HeroInfo = () => {
       <h1 className="text-2xl sm:text-5xl lg:text-7xl leading-tight flex flex-col items-center">
         <Heading as="span" className="text-5xl mb-3 sm:mb-0 sm:text-7xl text-secondary leading-snug max-w-4xl">
           We Build Web Apps That
-        </Heading>
+        </Heading>{' '}
         <motion.div
           className="text-nowrap mx-auto py-3"
           initial={{ width: "0%", overflow: "hidden" }}

@@ -9,7 +9,7 @@ const HeroRightImage = () => {
       transition={{ duration: 1, ease: 'easeInOut' }}
       className='absolute top-64 sm:top-20'
       src={expertiseImg}
-      alt='Hero right expertise image'
+      alt='Ferdous Ahmed web development and design expertise'
       width={405}
       height={238}
       loading='lazy'

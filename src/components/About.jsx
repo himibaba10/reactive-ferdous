@@ -4,7 +4,13 @@ import Heading from '../ui/Heading';
 import PrimaryButton from '../ui/PrimaryButton';
 import { useAboutSlider } from '../hooks/useAboutSlider';
 
-const projectImages = ['/projects/marvich-ai.webp', '/projects/kamro.webp', '/projects/electricallpro.webp', '/projects/claimcloud-cz.webp', '/projects/zeplan.webp'];
+const projectImages = [
+  { src: '/projects/marvich-ai.webp', alt: 'Marvich AI website project by Ferdous Ahmed' },
+  { src: '/projects/kamro.webp', alt: 'Kamro website project by Ferdous Ahmed' },
+  { src: '/projects/electricallpro.webp', alt: 'Electrical Pro website project by Ferdous Ahmed' },
+  { src: '/projects/claimcloud-cz.webp', alt: 'ClaimCloud CZ website project by Ferdous Ahmed' },
+  { src: '/projects/zeplan.webp', alt: 'Zeplan website project by Ferdous Ahmed' },
+];
 
 const About = () => {
   const images = useAboutSlider(projectImages);
@@ -44,7 +50,7 @@ const About = () => {
 
             return (
               <motion.img
-                key={img}
+                key={img.src}
                 initial={false}
                 animate={{
                   top: isFront ? '7rem' : isMid ? '3rem' : isBack ? '0rem' : '7rem',
@@ -54,8 +60,8 @@ const About = () => {
                   scale: isFront ? 1 : isMid ? 0.95 : isBack ? 0.9 : 1.1,
                 }}
                 transition={{ duration: 0.8, ease: 'easeInOut' }}
-                src={img}
-                alt='Portfolio Snippet'
+                src={img.src}
+                alt={img.alt}
                 loading='lazy'
                 className={`absolute w-3/5 aspect-[5/6] object-cover object-top rounded-xl shadow-2xl border ${isFront ? 'border-2 border-secondary/70' : 'border-zinc-700/50'} ${isHidden ? 'pointer-events-none' : ''}`}
               />

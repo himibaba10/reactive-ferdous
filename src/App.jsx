@@ -8,16 +8,18 @@ import Blob from './ui/Blob';
 
 function App() {
   return (
-    <main id='hero'>
+    <>
       <Popup />
       <FloatingWhatsApp />
       <Blob />
       <Navbar />
 
-      <Outlet />
+      <main id='hero'>
+        <Outlet />
+      </main>
 
       <Footer />
-    </main>
+    </>
   );
 }
 

@@ -48,8 +48,8 @@ const WebDevelopment = () => {
       />
 
       <ServiceHero
-        title='We Build Web Apps That'
-        highlightedText='Drive Growth'
+        title='Custom Web Development That'
+        highlightedText='Drives Revenue'
         description='Stop losing customers to slow, outdated websites. We specialize in crafting modern, SEO-friendly web solutions designed to maximize your ROI and act as a 24/7 lead magnet for your business.'
       >
         {/* Top Left Image */}
