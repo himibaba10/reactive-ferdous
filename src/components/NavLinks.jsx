@@ -13,7 +13,10 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
     { name: 'Logo Design', url: '/services/logo-design' },
   ];
 
-  const mainLinks = [{ name: 'About', url: '/#about' }];
+  const mainLinks = [
+    { name: 'Case Studies', url: '/work' },
+    { name: 'About', url: '/#about' },
+  ];
 
   const renderLink = (link) => {
     const isHash = link.url.includes('#');

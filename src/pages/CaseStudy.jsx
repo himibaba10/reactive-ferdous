@@ -55,22 +55,13 @@ const CaseStudy = () => {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-      ...(study.service
-        ? [
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: study.service.label,
-              item: `${SITE_URL}${study.service.path}`,
-            },
-          ]
-        : []),
       {
         '@type': 'ListItem',
-        position: study.service ? 3 : 2,
-        name: study.h1,
-        item: canonical,
+        position: 2,
+        name: 'Case Studies',
+        item: `${SITE_URL}/work`,
       },
+      { '@type': 'ListItem', position: 3, name: study.h1, item: canonical },
     ],
   };
 
@@ -100,19 +91,12 @@ const CaseStudy = () => {
                 Home
               </Link>
             </li>
-            {study.service && (
-              <>
-                <li aria-hidden='true'>/</li>
-                <li>
-                  <Link
-                    to={study.service.path}
-                    className='hover:text-white transition-colors'
-                  >
-                    {study.service.label}
-                  </Link>
-                </li>
-              </>
-            )}
+            <li aria-hidden='true'>/</li>
+            <li>
+              <Link to='/work' className='hover:text-white transition-colors'>
+                Case Studies
+              </Link>
+            </li>
             <li aria-hidden='true'>/</li>
             <li className='text-zinc-500'>{study.client}</li>
           </ol>

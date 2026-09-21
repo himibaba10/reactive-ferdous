@@ -12,7 +12,7 @@ export const SITE_URL = 'https://portfolio.reactiveferdous.com';
  *
  * `src` is used to derive an accurate `lastmod` from git.
  */
-const serviceRoutes = [
+const staticRoutes = [
   { path: '/', src: 'src/pages/Home.jsx', changefreq: 'weekly', priority: '1.0' },
   {
     path: '/services/web-development',
@@ -38,6 +38,12 @@ const serviceRoutes = [
     changefreq: 'monthly',
     priority: '0.8',
   },
+  {
+    path: '/work',
+    src: 'src/pages/Work.jsx',
+    changefreq: 'weekly',
+    priority: '0.8',
+  },
 ];
 
 const hasPlaceholder = (study) => JSON.stringify(study).includes('TODO');
@@ -60,4 +66,4 @@ const caseStudyRoutes = caseStudies
     priority: '0.7',
   }));
 
-export const PUBLIC_ROUTES = [...serviceRoutes, ...caseStudyRoutes];
+export const PUBLIC_ROUTES = [...staticRoutes, ...caseStudyRoutes];

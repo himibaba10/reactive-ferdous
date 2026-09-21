@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         lazy: lazyPage(() => import("./pages/LogoDesign.jsx")),
       },
       {
+        path: "work",
+        lazy: lazyPage(() => import("./pages/Work.jsx")),
+      },
+      {
         path: "work/:slug",
         lazy: lazyPage(() => import("./pages/CaseStudy.jsx")),
       },
