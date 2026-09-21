@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { MdOutlineDiamond, MdOutlineFontDownload, MdOutlinePets, MdOutlineViewInAr } from 'react-icons/md';
 import DesignGallery from '../components/DesignGallery';
-import DiscountBanner from '../components/DiscountBanner';
+import AuditBanner from '../components/AuditBanner';
 import SEO from '../components/SEO';
 import ServiceCards from '../components/ServiceCards';
 import ServiceHero from '../components/ServiceHero';
@@ -67,7 +67,7 @@ const LogoDesign = () => {
         description='We create distinctive, memorable logos that capture the essence of your business and serve as the cornerstone of your brand identity.'
       />
 
-      <DiscountBanner serviceName='Logo Design' />
+      <AuditBanner serviceName='Logo Design' />
 
       <section className='section max-w-6xl mx-auto mb-20 px-4'>
         <h2 className='text-3xl sm:text-5xl font-bold text-white mb-10 text-center'>Crafting Timeless Brands</h2>

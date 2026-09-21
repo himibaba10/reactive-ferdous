@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { MdAutoGraph, MdOutlineDraw, MdOutlineWeb, MdPhoneIphone } from 'react-icons/md';
 import DesignGallery from '../components/DesignGallery';
-import DiscountBanner from '../components/DiscountBanner';
+import AuditBanner from '../components/AuditBanner';
 import SEO from '../components/SEO';
 import ServiceCards from '../components/ServiceCards';
 import ServiceHero from '../components/ServiceHero';
@@ -67,7 +67,7 @@ const FigmaDesign = () => {
         description='We craft beautiful, user-centric interfaces in Figma that provide seamless experiences, intuitive navigation, and massive conversion rates.'
       />
 
-      <DiscountBanner serviceName='Figma UI/UX Design' />
+      <AuditBanner serviceName='Figma UI/UX Design' />
 
       <section className='section max-w-6xl mx-auto mb-20 px-4'>
         <h2 className='text-3xl sm:text-5xl font-bold text-white mb-10 text-center'>The Importance of UI/UX</h2>

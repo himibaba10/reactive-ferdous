@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineBusiness, MdOutlineCloud, MdOutlineShoppingCart, MdOutlineWeb } from 'react-icons/md';
-import DiscountBanner from '../components/DiscountBanner';
+import AuditBanner from '../components/AuditBanner';
 import LeadBanner from '../components/LeadBanner';
 import SEO from '../components/SEO';
 import ServiceCards from '../components/ServiceCards';
@@ -91,7 +91,7 @@ const WebDevelopment = () => {
         />
       </ServiceHero>
 
-      <DiscountBanner serviceName='Web Development' />
+      <AuditBanner serviceName='Web Development' />
 
       <section className='section max-w-6xl mx-auto mb-20 px-4'>
         <h2 className='text-3xl sm:text-5xl font-bold text-white mb-10 text-center'>Our Approach to Web Development</h2>

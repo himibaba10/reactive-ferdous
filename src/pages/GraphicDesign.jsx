@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { MdContactPage, MdOutlineImage, MdOutlineShare, MdViewDay } from 'react-icons/md';
 import DesignGallery from '../components/DesignGallery';
-import DiscountBanner from '../components/DiscountBanner';
+import AuditBanner from '../components/AuditBanner';
 import SEO from '../components/SEO';
 import ServiceCards from '../components/ServiceCards';
 import ServiceHero from '../components/ServiceHero';
@@ -47,7 +47,7 @@ const GraphicDesign = () => {
         description='Elevate your brand with premium, eye-catching graphic design. From memorable logos to complete marketing kits, we design visuals that leave a lasting impression.'
       />
 
-      <DiscountBanner serviceName='Graphic Design' />
+      <AuditBanner serviceName='Graphic Design' />
 
       <section className='section max-w-5xl mx-auto mb-10 text-center px-4'>
         <h2 className='text-3xl sm:text-5xl font-bold text-white mb-6'>Why Visual Identity Matters</h2>
