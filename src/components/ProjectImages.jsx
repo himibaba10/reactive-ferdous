@@ -13,7 +13,7 @@ export const ProjectImages = ({ projects }) => {
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
       {projects.map((slide, idx) => (
         <div
-          className='bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col group border border-zinc-100 dark:border-zinc-800'
+          className='relative bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col group border border-zinc-100 dark:border-zinc-800'
           key={slide.id || idx}
         >
           {/* main image wrapper */}
@@ -31,9 +31,23 @@ export const ProjectImages = ({ projects }) => {
 
           {/* content */}
           <div className='p-6 flex flex-col flex-grow'>
-            <div className='text-2xl font-bold transition-colors mb-4 inline-block'>
-              {slide.title} ↗
-            </div>
+            {slide.live ? (
+              // Stretched link: covers the whole card so the project opens its
+              // live site from anywhere, without nesting the code links inside it.
+              <a
+                href={slide.live}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label={`${slide.title} — visit the live website`}
+                className='text-2xl font-bold transition-colors mb-4 inline-block rounded-sm after:absolute after:inset-0 hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:outline-none'
+              >
+                {slide.title} ↗
+              </a>
+            ) : (
+              <div className='text-2xl font-bold transition-colors mb-4 inline-block'>
+                {slide.title}
+              </div>
+            )}
 
             <div className='flex flex-wrap gap-2 mb-6'>
               {slide.technologies?.map((tech) => (
@@ -46,28 +60,30 @@ export const ProjectImages = ({ projects }) => {
               ))}
             </div>
 
-            <div className='mt-auto pt-4 border-t border-zinc-200 dark:border-zinc-800 flex gap-4 text-sm font-medium'>
-              {slide.frontendCodeLink && (
-                <a
-                  href={slide.frontendCodeLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline'
-                >
-                  Frontend Code
-                </a>
-              )}
-              {slide.backendCodeLink && (
-                <a
-                  href={slide.backendCodeLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline'
-                >
-                  Backend Code
-                </a>
-              )}
-            </div>
+            {(slide.frontendCodeLink || slide.backendCodeLink) && (
+              <div className='relative z-10 mt-auto pt-4 border-t border-zinc-200 dark:border-zinc-800 flex gap-4 text-sm font-medium'>
+                {slide.frontendCodeLink && (
+                  <a
+                    href={slide.frontendCodeLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline'
+                  >
+                    Frontend Code
+                  </a>
+                )}
+                {slide.backendCodeLink && (
+                  <a
+                    href={slide.backendCodeLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white transition-colors underline'
+                  >
+                    Backend Code
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       ))}
