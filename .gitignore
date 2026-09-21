@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# Assistant preference files — local only, never committed
+.commandcode/

@@ -55,10 +55,10 @@ const prerender = async () => {
   try {
     for (const route of PUBLIC_ROUTES) {
       const context = await browser.newContext();
-      // The discount popup opens after 8s — never bake it into the static HTML.
+      // The audit popup opens after 8s — never bake it into the static HTML.
       await context.addInitScript(() => {
         try {
-          localStorage.setItem('hasSeenDiscountPopup', 'true');
+          localStorage.setItem('hasSeenAuditPopup', 'true');
         } catch {
           /* ignore */
         }

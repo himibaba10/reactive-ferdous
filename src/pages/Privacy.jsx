@@ -114,7 +114,7 @@ const Privacy = () => {
             how='until you clear it'
           />
           <Cookie
-            name='hasSeenDiscountPopup (local storage, not a cookie)'
+            name='hasSeenAuditPopup (local storage, not a cookie)'
             what='Stops the same promotional message being shown twice.'
             who='this site'
             how='until you clear it'
@@ -155,8 +155,7 @@ const Privacy = () => {
             <strong className='text-white'>Cloudinary</strong> — delivers images.
           </li>
           <li>
-            <strong className='text-white'>Our web hosting provider</strong> —
-            serves the site.
+            <strong className='text-white'>Netlify</strong> — serves the site.
           </li>
           <li>
             <strong className='text-white'>WhatsApp (Meta)</strong> — only if you

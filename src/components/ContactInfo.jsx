@@ -1,6 +1,9 @@
 import React from "react";
 import Heading from "../ui/Heading";
+import PrimaryButton from "../ui/PrimaryButton";
 import ContactSocialIcons from "./ContactSocialIcons";
+
+const CALENDLY_URL = "https://calendly.com/himibaba/new-meeting";
 
 const ContactInfo = () => {
   return (
@@ -11,13 +14,23 @@ const ContactInfo = () => {
       <div className="bg-zinc-800/80 border border-zinc-700 p-4 rounded-xl mb-6 inline-block">
         <p className="text-sm text-secondary font-bold mb-1">🔥 Limited Availability</p>
         <p className="text-sm text-zinc-300">
-          Due to high demand and our commitment to quality, we only take on <span className="text-white font-bold">2 new projects</span> per month. Spots for next month are filling up fast.
+          Due to high demand and our commitment to quality, we only take on <span className="text-white font-bold">2 new projects</span> per month.
         </p>
       </div>
 
       <p className="text-lg text-zinc-300 max-w-md leading-relaxed mb-6">
         Let's discuss how we can work together to build a digital solution that helps your business grow.
       </p>
+
+      <div className="mb-8">
+        <PrimaryButton
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book a Free 30-Minute Call
+        </PrimaryButton>
+      </div>
 
       <div className="flex items-center gap-3 text-zinc-300">
         <div className="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">

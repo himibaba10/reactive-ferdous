@@ -111,6 +111,18 @@ const Work = () => {
           >
             Start Your Project Today
           </PrimaryButton>
+          <p className='mt-6 text-zinc-400'>
+            Prefer to talk it through?{' '}
+            <a
+              href='https://calendly.com/himibaba/new-meeting'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-secondary underline underline-offset-4'
+            >
+              Book a free 30-minute call
+            </a>
+            .
+          </p>
         </div>
       </section>
     </>
