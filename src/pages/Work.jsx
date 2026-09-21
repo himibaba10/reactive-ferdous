@@ -75,6 +75,9 @@ const Work = () => {
                             key={result.label}
                             className='bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold rounded-full px-3 py-1'
                           >
+                            <span className='text-zinc-400 font-normal'>
+                              {result.label}:
+                            </span>{' '}
                             {result.value}
                           </li>
                         ))}

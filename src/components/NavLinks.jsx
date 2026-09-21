@@ -79,7 +79,7 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
   return (
     <>
       {/* Desktop navigation */}
-      <div className='hidden sm:flex w-1/2 justify-center items-center space-x-6 lg:space-x-10 uppercase text-sm lg:text-base font-medium relative'>
+      <div className='hidden sm:flex flex-1 w-1/2 justify-center items-center space-x-6 lg:space-x-10 uppercase text-sm lg:text-base font-medium relative'>
         {/* Services Dropdown */}
         <div className='relative group'>
           <button className='flex items-center text-white hover:text-secondary transition-colors uppercase'>

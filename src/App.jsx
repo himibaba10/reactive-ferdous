@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.css';
+import CookieConsent from './components/CookieConsent';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
@@ -23,6 +24,7 @@ function App() {
       </main>
 
       <Footer />
+      <CookieConsent />
     </>
   );
 }

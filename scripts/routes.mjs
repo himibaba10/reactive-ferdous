@@ -44,6 +44,12 @@ const staticRoutes = [
     changefreq: 'weekly',
     priority: '0.8',
   },
+  {
+    path: '/privacy',
+    src: 'src/pages/Privacy.jsx',
+    changefreq: 'yearly',
+    priority: '0.3',
+  },
 ];
 
 const hasPlaceholder = (study) => JSON.stringify(study).includes('TODO');

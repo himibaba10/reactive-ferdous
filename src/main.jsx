@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         path: "work/:slug",
         lazy: lazyPage(() => import("./pages/CaseStudy.jsx")),
       },
+      {
+        path: "privacy",
+        lazy: lazyPage(() => import("./pages/Privacy.jsx")),
+      },
     ],
   },
   {

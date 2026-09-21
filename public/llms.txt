@@ -12,6 +12,7 @@ Portfolio site for Ferdous Ahmed. Use the links below to discover services, cont
 - [Figma UI/UX Design](https://portfolio.reactiveferdous.com/services/figma-design): Interface design and interactive prototypes
 - [Logo Design](https://portfolio.reactiveferdous.com/services/logo-design): Custom brand marks and logotypes
 - [Case study: Simply Beds](https://portfolio.reactiveferdous.com/work/simply-beds): WordPress/WooCommerce performance rebuild — load time from over 6 seconds to under 1
+- [Case study: LRA Services](https://portfolio.reactiveferdous.com/work/lra-services): UK water hygiene firm's first website, built from scratch on a lean plugin stack
 - [Sitemap](https://portfolio.reactiveferdous.com/sitemap.xml): Machine-readable list of public URLs
 
 ## Contact

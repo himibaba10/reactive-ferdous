@@ -13,7 +13,8 @@
  * client reported rather than measured — see the `note` field on `results`.
  *
  * Voice: the site speaks as "we" throughout. Client testimonial quotes are the
- * one exception — those are the client's own words and stay untouched.
+ * one exception — those are the client's own words and stay untouched apart
+ * from light grammar fixes, which are recorded in a comment above each quote.
  */
 export const caseStudies = [
   {
@@ -93,6 +94,87 @@ export const caseStudies = [
         "I have worked with Ferdous a number of times now. I find him exceptional. He is very happy to help and to go above and beyond the required task. I can't be more pleased with his knowledge and ability to get the job done.",
       author: 'Satbir Singh',
       role: 'Simply Beds',
+    },
+  },
+
+  {
+    slug: 'lra-services',
+    published: true,
+    client: 'LRA Services',
+    service: { label: 'Web Development', path: '/services/web-development' },
+    date: 'July 2026',
+    timeline: '2 weeks',
+
+    // --- SEO ---
+    title: 'Legionella Website Built From Scratch | LRA Services',
+    metaDescription:
+      "How we built a UK water hygiene firm's first website from scratch — a lean three-plugin stack, content the team edits themselves, on-page SEO and caching.",
+    ogImage: '/case-studies/lra-services/hero.webp',
+
+    // --- Header ---
+    h1: 'A First Website the Team Can Run Without a Developer',
+    summary:
+      'LRA Services needed their first website — a full presence for a UK legionella and water hygiene contractor. We built it from the blueprint up, page by page, on three core plugins, with every section editable from the WordPress dashboard.',
+    stack: ['WordPress', 'Elementor Pro', 'Crocoblock', 'ACF'],
+
+    heroImage: {
+      src: '/case-studies/lra-services/hero.webp',
+      alt: 'The LRA Services homepage, showing their legionella risk assessment services',
+      width: 1600,
+      height: 1000,
+    },
+
+    // --- Body ---
+    context:
+      'LRA Services delivers legionella risk assessments, water hygiene monitoring, water treatment and compliance services across the UK, for sectors including healthcare, construction, education, hospitality and facilities management.',
+    problem:
+      'They had no website at all — this was their first. For a compliance-led business selling to NHS trusts, contractors and facilities managers, that meant no credible presence to send prospects to, no way for a site manager to request an assessment, and nothing for search engines to rank.',
+    constraints: [
+      'The site had to cover several distinct service lines, multiple sectors and training courses without becoming unwieldy.',
+      'The team needed to change content themselves after handover, rather than going back to a developer for every edit.',
+    ],
+    approach: [
+      {
+        title: 'Structure before pixels',
+        body: 'We started with the blueprint — the page structure, and what each page had to do — then built every page and the functionality behind it. Deciding the shape first is what keeps a multi-service site navigable.',
+      },
+      {
+        title: 'Three plugins, deliberately',
+        body: 'The build runs on three core plugins: Elementor Pro for layout, Crocoblock for dynamic content and ACF for custom fields. Fewer moving parts means fewer conflicts, and far less to keep patched.',
+      },
+      {
+        title: 'Everything editable from the dashboard',
+        body: 'Content and options are editable from the WordPress dashboard, so the team can change copy, images and structure themselves — no code, and no waiting on a developer.',
+      },
+      {
+        title: 'SEO, images and caching',
+        body: 'On-page SEO was set up across the site, images were optimised, and both client-side and server-side caching were configured to keep pages fast.',
+      },
+    ],
+    results: [
+      { label: 'PageSpeed score', value: '90+' },
+      { label: 'Content updates', value: 'No code needed' },
+      { label: 'Core plugins', value: '3' },
+    ],
+    proof: [
+      {
+        src: '/case-studies/lra-services/proof-1.webp',
+        alt: 'The LRA Services legionella risk assessment service page',
+        caption:
+          'The legionella risk assessment service page — one of the service lines built for launch.',
+        width: 1600,
+        height: 1000,
+      },
+    ],
+    testimonial: {
+      // Light copy-edit for grammar only: "excellent designing" -> "an excellent
+      // job designing", "functionalities" -> "functionality", "from WordPress
+      // dashboard" -> "from the WordPress dashboard". "Ferdous have" kept as the
+      // client's plural framing (they call it "the Reactive Ferdous team").
+      quote:
+        "Ferdous have done an excellent job designing the website from scratch, from making the blueprint to building every page and functionality. He made all the options customizable from the WordPress dashboard, and the website loads really fast! Kudos to the Reactive Ferdous team!",
+      author: 'Kelly Arendse',
+      role: 'Manager, LRA Services',
     },
   },
 ];

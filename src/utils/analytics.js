@@ -1,18 +1,62 @@
 /**
- * GA4 event helpers.
+ * Analytics and cookie consent.
  *
- * `gtag.js` is loaded lazily (first interaction / 12s fallback) in index.html,
- * so an event fired before that must be queued — gtag.js drains
- * `window.dataLayer` on init.
+ * The GA4 tag is not loaded until the visitor accepts analytics cookies —
+ * index.html only *defines* `window.__loadAnalytics()`, it does not call it.
+ * Nothing is measured, and no analytics cookie is set, before that point.
+ */
+
+const CONSENT_KEY = 'cookieConsent';
+
+/** 'accepted' | 'declined' | null (no choice made yet) */
+export const getConsent = () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.localStorage.getItem(CONSENT_KEY);
+  } catch {
+    return null;
+  }
+};
+
+export const loadAnalytics = () => {
+  if (typeof window === 'undefined') return;
+  if (typeof window.__loadAnalytics === 'function') window.__loadAnalytics();
+};
+
+export const setConsent = (value) => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(CONSENT_KEY, value);
+  } catch {
+    /* storage unavailable — treat as no consent */
+  }
+  if (value === 'accepted') loadAnalytics();
+};
+
+/** Forget the stored choice, so the banner asks again. */
+export const clearConsent = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    /* ignore */
+  }
+};
+
+/**
+ * Send a GA4 event. Does nothing at all without consent, so no identifiers are
+ * collected from visitors who have not opted in.
  */
 export const trackEvent = (name, params = {}) => {
   if (typeof window === 'undefined') return;
+  if (getConsent() !== 'accepted') return;
 
   if (typeof window.gtag === 'function') {
     window.gtag('event', name, params);
     return;
   }
 
+  // Queued only if consent exists but gtag.js has not finished loading.
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(['event', name, params]);
 };

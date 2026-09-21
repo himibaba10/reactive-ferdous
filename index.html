@@ -120,16 +120,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- Analytics: load only after first interaction (keeps gtag off Lighthouse unused-JS) -->
+    <!--
+      Analytics: this only DEFINES the loader. gtag.js is not fetched until the
+      visitor accepts analytics cookies — see src/components/CookieConsent.jsx.
+      Keeping it off until consent means no analytics cookie is set beforehand.
+    -->
     <script>
       (function () {
         var loaded = false;
-        function loadGA() {
+        window.__loadAnalytics = function () {
           if (loaded) return;
           loaded = true;
-          ['scroll', 'click', 'keydown', 'touchstart'].forEach(function (evt) {
-            window.removeEventListener(evt, loadGA);
-          });
           var s = document.createElement('script');
           s.async = true;
           s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QDZ7CKLE3F';
@@ -141,12 +142,7 @@
           window.gtag = gtag;
           gtag('js', new Date());
           gtag('config', 'G-QDZ7CKLE3F');
-        }
-        ['scroll', 'click', 'keydown', 'touchstart'].forEach(function (evt) {
-          window.addEventListener(evt, loadGA, { once: true, passive: true });
-        });
-        // Fallback for sessions with no interaction
-        setTimeout(loadGA, 12000);
+        };
       })();
     </script>
   </body>

@@ -3,6 +3,7 @@ import { LuUser } from "react-icons/lu";
 import { FaRegEnvelope, FaRegStickyNote } from "react-icons/fa";
 import PrimaryButton from "../ui/PrimaryButton";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useContactForm } from "../hooks/useContactForm";
 import { trackEvent } from "../utils/analytics";
 
@@ -70,6 +71,13 @@ const ContactForm = () => {
             {state.submitting ? "Submitting" : "Mail Me!"}
           </PrimaryButton>
         </div>
+        <p className="text-xs text-primary/80">
+          We only use your details to reply. See our{" "}
+          <Link to="/privacy" className="underline underline-offset-2">
+            Privacy Policy
+          </Link>
+          .
+        </p>
         {!state.submitting && state.succeeded && (
           <p className="text-white text-center absolute bottom-0">
             Thanks for joining!
