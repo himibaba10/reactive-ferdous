@@ -12,7 +12,7 @@ const ExperienceCard = () => {
         rel='noopener noreferrer' 
         className='mb-3'
       >
-        My RESUME
+        RESUME
       </PrimaryButton>
       
       <PrimaryButton 
@@ -22,7 +22,7 @@ const ExperienceCard = () => {
         rel='noopener noreferrer' 
         className='mb-3'
       >
-        My CV
+        CV
       </PrimaryButton>
       
       <PrimaryButton 
@@ -31,7 +31,7 @@ const ExperienceCard = () => {
         target='_blank' 
         rel='noopener noreferrer'
       >
-        My GitHub
+        GitHub
       </PrimaryButton>
     </div>
   );

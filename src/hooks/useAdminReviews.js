@@ -3,8 +3,11 @@ import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase';
 import { uploadImageToCloudinary } from '../utils/cloudinary';
 
+const emptyForm = { quote: '', author: '', role: '', rating: '' };
+
 export const useAdminReviews = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [form, setForm] = useState(emptyForm);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [reviews, setReviews] = useState([]);
@@ -26,19 +29,41 @@ export const useAdminReviews = () => {
     fetchReviews();
   }, []);
 
+  const setField = (field) => (event) =>
+    setForm((prev) => ({ ...prev, [field]: event.target.value }));
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedFile) return;
+
+    const quote = form.quote.trim();
+    // A quote is what makes a review indexable; an image alone still works.
+    if (!quote && !selectedFile) {
+      setMessage('Error: add a written quote, an image, or both.');
+      return;
+    }
 
     setLoading(true);
     setMessage('');
 
     try {
-      const secureUrl = await uploadImageToCloudinary(selectedFile, 'Reactive Ferdous/reviews');
+      const payload = {
+        quote,
+        author: form.author.trim(),
+        role: form.role.trim(),
+        rating: form.rating ? Number(form.rating) : null,
+      };
 
-      await addDoc(collection(db, 'reviews'), { img: secureUrl });
-      setMessage('Review image added successfully!');
+      if (selectedFile) {
+        payload.img = await uploadImageToCloudinary(
+          selectedFile,
+          'Reactive Ferdous/reviews'
+        );
+      }
+
+      await addDoc(collection(db, 'reviews'), payload);
+      setMessage('Review added successfully!');
       setSelectedFile(null);
+      setForm(emptyForm);
       e.target.reset(); // Reset file input
       fetchReviews();
     } catch (error) {
@@ -64,6 +89,8 @@ export const useAdminReviews = () => {
   return {
     selectedFile,
     setSelectedFile,
+    form,
+    setField,
     loading,
     message,
     reviews,

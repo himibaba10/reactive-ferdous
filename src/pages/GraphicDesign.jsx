@@ -44,7 +44,7 @@ const GraphicDesign = () => {
       <ServiceHero
         title='Visual Identities That'
         highlightedText='Stand Out'
-        description='Elevate your brand with premium, eye-catching graphic design. From memorable logos to complete marketing kits, We design visuals that leave a lasting impression.'
+        description='Elevate your brand with premium, eye-catching graphic design. From memorable logos to complete marketing kits, we design visuals that leave a lasting impression.'
       />
 
       <DiscountBanner serviceName='Graphic Design' />
@@ -56,7 +56,7 @@ const GraphicDesign = () => {
           conveys professionalism, and separates you from the competition.
         </p>
         <p className='text-zinc-400 text-lg leading-relaxed'>
-          Our graphic design services are rooted in strategy. We don't just make things look good; We ensure your marketing materials, brand guidelines, and digital assets align perfectly with your core
+          Our graphic design services are rooted in strategy. We don't just make things look good; we ensure your marketing materials, brand guidelines, and digital assets align perfectly with your core
           business values and speak directly to your target audience.
         </p>
       </section>

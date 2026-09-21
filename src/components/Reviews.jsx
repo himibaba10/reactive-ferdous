@@ -1,17 +1,18 @@
 import React from "react";
 import Heading from "../ui/Heading";
-import { motion, AnimatePresence } from "framer-motion";
-import { MdFormatQuote, MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { MdFormatQuote } from "react-icons/md";
 import { useReviews } from "../hooks/useReviews";
+import { SITE_URL } from "./SEO";
+
+const Stars = ({ rating }) => (
+  <span className="text-secondary" aria-label={`Rated ${rating} out of 5`}>
+    {"★".repeat(Math.round(rating))}
+    {"☆".repeat(Math.max(0, 5 - Math.round(rating)))}
+  </span>
+);
 
 const Reviews = () => {
-  const {
-    reviews,
-    loading,
-    currentIndex,
-    nextSlide,
-    prevSlide
-  } = useReviews();
+  const { reviews, loading } = useReviews();
 
   if (loading) {
     return (
@@ -23,8 +24,66 @@ const Reviews = () => {
 
   if (reviews.length === 0) return null;
 
+  // Written reviews are rendered as crawlable text; anything still image-only
+  // falls back to the screenshot below.
+  // Named client testimonials (featured) lead; marketplace reviews follow.
+  const textReviews = reviews
+    .filter((r) => r.quote && r.author)
+    .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
+  const imageOnly = reviews.filter((r) => !r.quote && r.img);
+
+  const ratings = textReviews
+    .map((r) => Number(r.rating))
+    .filter((n) => Number.isFinite(n) && n > 0);
+  const averageRating = ratings.length
+    ? (ratings.reduce((sum, n) => sum + n, 0) / ratings.length).toFixed(1)
+    : null;
+
+  const reviewSchema = textReviews.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Ferdous Ahmed",
+        url: SITE_URL,
+        areaServed: "Worldwide",
+        review: textReviews.map((r) => ({
+          "@type": "Review",
+          reviewBody: r.quote,
+          author: { "@type": "Person", name: r.author },
+          ...(Number(r.rating)
+            ? {
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: Number(r.rating),
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              }
+            : {}),
+        })),
+        ...(averageRating
+          ? {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: Number(averageRating),
+                reviewCount: textReviews.length,
+                bestRating: 5,
+                worstRating: 1,
+              },
+            }
+          : {}),
+      }
+    : null;
+
   return (
     <section id="reviews" className="section my-20 py-20 w-full bg-zinc-900/30 rounded-3xl relative overflow-hidden">
+      {reviewSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        />
+      )}
+
       <div className="absolute top-10 left-10 text-zinc-800 opacity-20">
         <MdFormatQuote size={120} />
       </div>
@@ -36,42 +95,48 @@ const Reviews = () => {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 relative z-10 flex justify-center items-center min-h-[300px]">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={reviews[currentIndex].img}
-            alt={`Client testimonial ${currentIndex + 1} of ${reviews.length} for Ferdous Ahmed`}
-            width={800}
-            height={600}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5 }}
-            loading="lazy"
-            decoding="async"
-            className="w-full max-h-[600px] h-auto object-contain rounded-xl shadow-2xl"
-          />
-        </AnimatePresence>
-      </div>
-      
-      {/* Navigation Arrows */}
-      <div className="flex justify-center gap-6 mt-8 relative z-10">
-        <button
-          aria-label="Previous review"
-          onClick={prevSlide}
-          className="p-3 rounded-full bg-zinc-800 hover:bg-secondary hover:text-black transition-colors text-zinc-300 shadow-lg"
-        >
-          <MdChevronLeft size={28} />
-        </button>
-        <button
-          aria-label="Next review"
-          onClick={nextSlide}
-          className="p-3 rounded-full bg-zinc-800 hover:bg-secondary hover:text-black transition-colors text-zinc-300 shadow-lg"
-        >
-          <MdChevronRight size={28} />
-        </button>
-      </div>
+      {textReviews.length > 0 && (
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {textReviews.map((review) => (
+            <figure
+              key={review.id || review.author}
+              className="flex flex-col bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6"
+            >
+              {Number(review.rating) > 0 && (
+                <div className="mb-3">
+                  <Stars rating={Number(review.rating)} />
+                </div>
+              )}
+              <blockquote className="flex-grow text-zinc-300 leading-relaxed">
+                &ldquo;{review.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-4 text-sm">
+                <span className="text-white font-semibold">{review.author}</span>
+                {review.role ? (
+                  <span className="text-zinc-500"> · {review.role}</span>
+                ) : null}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+
+      {imageOnly.length > 0 && (
+        <div className="relative z-10 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {imageOnly.map((review) => (
+            <img
+              key={review.id}
+              src={review.img}
+              alt="Client feedback for Ferdous Ahmed"
+              width={800}
+              height={600}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto rounded-2xl border border-zinc-800"
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

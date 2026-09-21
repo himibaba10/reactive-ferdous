@@ -40,8 +40,19 @@ const serviceRoutes = [
   },
 ];
 
+const hasPlaceholder = (study) => JSON.stringify(study).includes('TODO');
+
 const caseStudyRoutes = caseStudies
-  .filter((study) => study.published)
+  .filter((study) => {
+    if (!study.published) return false;
+    if (hasPlaceholder(study)) {
+      console.warn(
+        `[routes] Skipping published case study "${study.slug}" — it still contains TODO placeholders.`
+      );
+      return false;
+    }
+    return true;
+  })
   .map((study) => ({
     path: `/work/${study.slug}`,
     src: 'src/data/caseStudies.js',

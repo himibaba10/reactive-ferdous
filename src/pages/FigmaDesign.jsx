@@ -151,7 +151,7 @@ const FigmaDesign = () => {
         </div>
       </section>
 
-      <ServiceCards title='UI/UX Services' description='From raw concepts to fully interactive prototypes, We handle the complete design lifecycle.' cards={cards} />
+      <ServiceCards title='UI/UX Services' description='From raw concepts to fully interactive prototypes, we handle the complete design lifecycle.' cards={cards} />
 
       <DesignGallery category='Figma Design' title='UI/UX Prototypes' description='A showcase of wireframes, mockups, and interactive prototypes.' />
 

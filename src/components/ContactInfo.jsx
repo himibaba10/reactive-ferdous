@@ -11,7 +11,7 @@ const ContactInfo = () => {
       <div className="bg-zinc-800/80 border border-zinc-700 p-4 rounded-xl mb-6 inline-block">
         <p className="text-sm text-secondary font-bold mb-1">🔥 Limited Availability</p>
         <p className="text-sm text-zinc-300">
-          Due to high demand and my commitment to quality, I only take on <span className="text-white font-bold">2 new projects</span> per month. Spots for next month are filling up fast.
+          Due to high demand and our commitment to quality, we only take on <span className="text-white font-bold">2 new projects</span> per month. Spots for next month are filling up fast.
         </p>
       </div>
 

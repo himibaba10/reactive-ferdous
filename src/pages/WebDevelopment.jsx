@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Suspense, lazy } from 'react';
+import { Link } from 'react-router-dom';
 import { MdOutlineBusiness, MdOutlineCloud, MdOutlineShoppingCart, MdOutlineWeb } from 'react-icons/md';
 import DiscountBanner from '../components/DiscountBanner';
 import LeadBanner from '../components/LeadBanner';
@@ -127,7 +128,27 @@ const WebDevelopment = () => {
         </div>
       </section>
 
-      <ServiceCards title='What We Build' description='From high-converting landing pages to complex web applications, We have you covered.' cards={cards} />
+      <section className='section max-w-6xl mx-auto mb-20 px-4'>
+        <Link
+          to='/work/simply-beds'
+          className='block bg-zinc-900/40 border border-zinc-800 hover:border-secondary/60 rounded-3xl p-8 sm:p-10 transition-colors group'
+        >
+          <span className='text-secondary font-bold tracking-wider uppercase text-sm block mb-3'>
+            Case study
+          </span>
+          <h2 className='text-2xl sm:text-4xl font-bold text-white mb-3 group-hover:text-secondary transition-colors'>
+            From 6 seconds to under 1 — a WooCommerce rescue
+          </h2>
+          <p className='text-zinc-400 max-w-3xl'>
+            80+ plugins cut to 25, competing page builders collapsed into one, and load time dropped from over six seconds to under a second. See how the Simply Beds store was rebuilt in ten days.
+          </p>
+          <span className='inline-block mt-6 text-zinc-300 underline underline-offset-4'>
+            Read the Simply Beds case study →
+          </span>
+        </Link>
+      </section>
+
+      <ServiceCards title='What We Build' description='From high-converting landing pages to complex web applications, we have you covered.' cards={cards} />
 
       <Suspense fallback={<div className='min-h-[200px] flex items-center justify-center text-zinc-400'>Loading...</div>}>
         <Process />

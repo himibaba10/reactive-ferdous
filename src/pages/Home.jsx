@@ -5,9 +5,10 @@ import About from '../components/About';
 import Services from '../components/Services';
 import SEO from '../components/SEO';
 
-// Defer Firebase-backed slider off the critical path
+// Defer Firebase-backed sections off the critical path
 const LogoSlider = lazy(() => import('../components/LogoSlider'));
-// Below-the-fold (Reviews also pulls Firebase)
+// Below-the-fold (Portfolio and Reviews also pull Firebase)
+const Portfolio = lazy(() => import('../components/Portfolio'));
 const Reviews = lazy(() => import('../components/Reviews'));
 const FAQ = lazy(() => import('../components/FAQ'));
 const Contact = lazy(() => import('../components/Contact'));
@@ -39,6 +40,8 @@ function Home() {
 
       {/* Below the fold */}
       <Suspense fallback={sectionFallback}>
+        <Portfolio />
+
         <LeadBanner
           text="Not sure where to start? Let's map out your strategy."
           buttonText='Get a Free Audit'

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LuUser } from "react-icons/lu";
 import { FaRegEnvelope, FaRegStickyNote } from "react-icons/fa";
 import PrimaryButton from "../ui/PrimaryButton";
 import { motion } from "framer-motion";
 import { useContactForm } from "../hooks/useContactForm";
+import { trackEvent } from "../utils/analytics";
 
 const ContactForm = () => {
   const { state, handleFormSubmit } = useContactForm("xvoebwnj");
+
+  useEffect(() => {
+    if (state.succeeded) {
+      trackEvent("contact_form_submit", { form_id: "xvoebwnj" });
+    }
+  }, [state.succeeded]);
 
   return (
     <div
@@ -54,7 +61,7 @@ const ContactForm = () => {
           <FaRegStickyNote className="absolute text-xl top-[17px] left-3" />
           <textarea
             name="description"
-            placeholder="Have something to say? I'd love to hear! :D"
+            placeholder="Have something to say? We'd love to hear! :D"
             className="w-full border border-primary pl-10 p-3.5 placeholder:text-primary resize-none"
           />
         </motion.div>

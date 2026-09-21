@@ -54,7 +54,7 @@ const Popup = () => {
             </h2>
             
             <p className="text-zinc-400 mb-8 leading-relaxed">
-              As a first-time client, We want to prove our value to you. Let's build your dream project at half the cost. <strong className="text-white">Valid for the next 2 clients only.</strong>
+              As a first-time client, we want to prove our value to you. Let's build your dream project at half the cost. <strong className="text-white">Valid for the next 2 clients only.</strong>
             </p>
 
             <PrimaryButton

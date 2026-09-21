@@ -151,7 +151,7 @@ const LogoDesign = () => {
         </div>
       </section>
 
-      <ServiceCards title='Logo Design Styles' description="From clean minimalism to complex 3D marks, We tailor the aesthetic to match your brand's unique personality." cards={cards} />
+      <ServiceCards title='Logo Design Styles' description="From clean minimalism to complex 3D marks, we tailor the aesthetic to match your brand's unique personality." cards={cards} />
 
       <DesignGallery category='Logo Design' title='Logo Portfolio' description='A collection of custom brand marks and logotypes.' />
 

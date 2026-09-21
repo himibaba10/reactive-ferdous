@@ -119,7 +119,8 @@ const CaseStudy = () => {
         </nav>
 
         <p className='text-secondary font-bold tracking-wider uppercase text-sm mb-4'>
-          {study.client} · {study.year}
+          {study.client}
+          {study.date ? ` · ${study.date}` : ''}
         </p>
 
         <h1 className='text-3xl sm:text-5xl lg:text-6xl leading-tight text-white'>
@@ -240,6 +241,9 @@ const CaseStudy = () => {
                   {result.value}
                 </p>
                 <p className='text-zinc-400'>{result.label}</p>
+                {result.note && (
+                  <p className='mt-2 text-xs text-zinc-500'>{result.note}</p>
+                )}
               </div>
             ))}
           </div>

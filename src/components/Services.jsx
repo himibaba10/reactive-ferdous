@@ -57,7 +57,7 @@ const Services = () => {
       <div className="text-center mb-16">
         <Heading className="text-4xl sm:text-6xl mb-6">How We Can Help You</Heading>
         <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-          We partner with businesses to deliver digital solutions that solve real problems. Here is what We specialize in.
+          We partner with businesses to deliver digital solutions that solve real problems. Here is what we specialize in.
         </p>
       </div>
 

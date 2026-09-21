@@ -11,6 +11,7 @@ Portfolio site for Ferdous Ahmed. Use the links below to discover services, cont
 - [Graphic Design](https://portfolio.reactiveferdous.com/services/graphic-design): Branding, marketing, and visual identity work
 - [Figma UI/UX Design](https://portfolio.reactiveferdous.com/services/figma-design): Interface design and interactive prototypes
 - [Logo Design](https://portfolio.reactiveferdous.com/services/logo-design): Custom brand marks and logotypes
+- [Case study: Simply Beds](https://portfolio.reactiveferdous.com/work/simply-beds): WordPress/WooCommerce performance rebuild — load time from over 6 seconds to under 1
 - [Sitemap](https://portfolio.reactiveferdous.com/sitemap.xml): Machine-readable list of public URLs
 
 ## Contact
