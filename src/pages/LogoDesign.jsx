@@ -126,7 +126,7 @@ const LogoDesign = () => {
                 A modern SaaS company needed to shed its generic template logo to attract enterprise clients. We crafted a sleek, geometric mark that communicated security and innovation.
               </p>
               <div className='flex flex-wrap items-center gap-3 text-secondary font-bold'>
-                <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>+40% Conversion Rate</span>
+                <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>Improved Conversion</span>
                 <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>Enterprise Trust</span>
               </div>
             </div>

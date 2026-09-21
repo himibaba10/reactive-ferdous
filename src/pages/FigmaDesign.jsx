@@ -126,7 +126,7 @@ const FigmaDesign = () => {
                 A financial dashboard was losing users due to overwhelming data displays. We restructured the information architecture and created a clean, modern interface in Figma.
               </p>
               <div className='flex flex-wrap items-center gap-3 text-secondary font-bold'>
-                <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>-60% Churn Rate</span>
+                <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>Lower Churn</span>
                 <span className='bg-secondary/10 px-3 py-1 rounded-full text-sm border border-secondary/20'>Higher Engagement</span>
               </div>
             </div>

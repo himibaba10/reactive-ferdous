@@ -1,10 +1,18 @@
+import { caseStudies } from '../src/data/caseStudies.js';
+
 export const SITE_URL = 'https://portfolio.reactiveferdous.com';
 
 /**
  * Public, indexable routes. Single source of truth for the prerender step and
- * the sitemap generator. `src` is used to derive an accurate `lastmod` from git.
+ * the sitemap generator.
+ *
+ * Case studies are derived from `src/data/caseStudies.js`, so publishing one is
+ * a single content edit: flip `published` to true and it is prerendered and
+ * added to the sitemap automatically.
+ *
+ * `src` is used to derive an accurate `lastmod` from git.
  */
-export const PUBLIC_ROUTES = [
+const serviceRoutes = [
   { path: '/', src: 'src/pages/Home.jsx', changefreq: 'weekly', priority: '1.0' },
   {
     path: '/services/web-development',
@@ -31,3 +39,14 @@ export const PUBLIC_ROUTES = [
     priority: '0.8',
   },
 ];
+
+const caseStudyRoutes = caseStudies
+  .filter((study) => study.published)
+  .map((study) => ({
+    path: `/work/${study.slug}`,
+    src: 'src/data/caseStudies.js',
+    changefreq: 'monthly',
+    priority: '0.7',
+  }));
+
+export const PUBLIC_ROUTES = [...serviceRoutes, ...caseStudyRoutes];
