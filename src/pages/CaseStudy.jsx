@@ -311,6 +311,18 @@ const CaseStudy = () => {
           </a>
           .
         </p>
+        {study.pdf && (
+          <p className='mt-4 text-zinc-400'>
+            <a
+              href={study.pdf}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-secondary underline underline-offset-4'
+            >
+              Read this case study as a PDF
+            </a>
+          </p>
+        )}
       </section>
     </article>
   );

@@ -30,6 +30,18 @@ const ContactInfo = () => {
         >
           Book a Free 30-Minute Call
         </PrimaryButton>
+        <p className="mt-4 text-sm text-zinc-400">
+          In a hurry?{' '}
+          <a
+            href="/one-page-overview.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-secondary underline underline-offset-4"
+          >
+            Read our one-page overview
+          </a>
+          .
+        </p>
       </div>
 
       <div className="flex items-center gap-3 text-zinc-300">

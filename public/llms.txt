@@ -17,6 +17,12 @@ Portfolio site for Ferdous Ahmed. Use the links below to discover services, cont
 - [Privacy & Cookies](https://portfolio.reactiveferdous.com/privacy/): How this site handles data, and the cookie choices available
 - [Sitemap](https://portfolio.reactiveferdous.com/sitemap.xml): Machine-readable list of public URLs
 
+## Documents
+
+- [One-page overview (PDF)](https://portfolio.reactiveferdous.com/one-page-overview.pdf): Experience, results and references on a single page
+- [Case study: Simply Beds (PDF)](https://portfolio.reactiveferdous.com/case-studies/simply-beds.pdf): WooCommerce rebuild — 6s to under 1s, 80+ plugins to 25
+- [Case study: LRA Services (PDF)](https://portfolio.reactiveferdous.com/case-studies/lra-services.pdf): First website built from scratch on a three-plugin stack
+
 ## Contact
 
 - [WhatsApp](https://wa.me/8801997722621): Primary contact for project inquiries
