@@ -49,9 +49,11 @@ const SEO = ({
   noindex = false,
 }) => {
   useEffect(() => {
-    const normalizedPath = path === '/' ? '/' : path.replace(/\/$/, '');
-    const canonicalUrl =
-      normalizedPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalizedPath}`;
+    // Netlify normalises these pages to a trailing slash (Pretty URLs) with a
+    // 301, so the canonical has to match the URL that is actually served —
+    // pointing it at the redirect source sends conflicting signals.
+    const normalizedPath = path === '/' ? '/' : `${path.replace(/\/$/, '')}/`;
+    const canonicalUrl = `${SITE_URL}${normalizedPath}`;
 
     if (title) {
       document.title = title;

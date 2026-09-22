@@ -1,1 +1,7 @@
-/*  /app.html  200
+/admin/*      /app.html    200
+/dashboard/*  /app.html    200
+
+# Everything else that resolves to no file is a genuine 404, not the SPA shell.
+# Static files still take precedence over these rules, so every prerendered
+# page (and the 404 itself) is served directly.
+/*            /404.html    404

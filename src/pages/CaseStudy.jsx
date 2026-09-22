@@ -34,7 +34,7 @@ const CaseStudy = () => {
 
   if (!study) return <CaseStudyNotFound />;
 
-  const canonical = `${SITE_URL}/work/${study.slug}`;
+  const canonical = `${SITE_URL}/work/${study.slug}/`;
   const ogImage = absolute(study.ogImage || study.heroImage?.src);
 
   const creativeWork = {
@@ -59,7 +59,7 @@ const CaseStudy = () => {
         '@type': 'ListItem',
         position: 2,
         name: 'Case Studies',
-        item: `${SITE_URL}/work`,
+        item: `${SITE_URL}/work/`,
       },
       { '@type': 'ListItem', position: 3, name: study.h1, item: canonical },
     ],

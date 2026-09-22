@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import "./index.css";
 
 /** Map default-export pages to React Router's route.lazy shape */
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "privacy",
         lazy: lazyPage(() => import("./pages/Privacy.jsx")),
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

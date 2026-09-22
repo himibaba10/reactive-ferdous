@@ -26,7 +26,9 @@ export const generateSitemap = async () => {
   const today = buildDate();
 
   const urls = PUBLIC_ROUTES.map((route) => {
-    const loc = route.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${route.path}`;
+    // Match the trailing-slash form Netlify actually serves.
+    const normalized = route.path === '/' ? '/' : `${route.path.replace(/\/$/, '')}/`;
+    const loc = `${SITE_URL}${normalized}`;
     const lastmod = gitDate(route.src) || today;
     return [
       '  <url>',
