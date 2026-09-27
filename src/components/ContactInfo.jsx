@@ -64,9 +64,9 @@ const ContactInfo = () => {
           Email:{" "}
           <a
             className="underline underline-offset-2"
-            href="mailto:himibaba10@gmail.com"
+            href="mailto:contact@reactiveferdous.com"
           >
-            himibaba10@gmail.com
+            contact@reactiveferdous.com
           </a>
         </li>
       </ul>

@@ -57,10 +57,10 @@ const Privacy = () => {
           &ldquo;us&rdquo;, &ldquo;our&rdquo;). For anything in this policy, or
           to exercise any of the rights below, email{' '}
           <a
-            href='mailto:himibaba10@gmail.com'
+            href='mailto:contact@reactiveferdous.com'
             className='text-secondary underline underline-offset-2'
           >
-            himibaba10@gmail.com
+            contact@reactiveferdous.com
           </a>
           .
         </P>
@@ -148,6 +148,10 @@ const Privacy = () => {
             form submissions to our inbox.
           </li>
           <li>
+            <strong className='text-white'>Resend</strong> — may send you a
+            confirmation email after you submit the contact form.
+          </li>
+          <li>
             <strong className='text-white'>Google Firebase</strong> — stores the
             project and review content this site displays.
           </li>
@@ -200,10 +204,10 @@ const Privacy = () => {
         <P>
           To exercise any of these, email{' '}
           <a
-            href='mailto:himibaba10@gmail.com'
+            href='mailto:contact@reactiveferdous.com'
             className='text-secondary underline underline-offset-2'
           >
-            himibaba10@gmail.com
+            contact@reactiveferdous.com
           </a>
           . If you are in the UK or the EEA, you also have the right to complain
           to your local data protection authority.
