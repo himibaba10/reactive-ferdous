@@ -4,14 +4,18 @@ import { useForm } from '@formspree/react';
 const CONFIRM_ENDPOINT = '/.netlify/functions/send-confirmation';
 
 async function sendConfirmation({ name, email, company }) {
-  try {
-    await fetch(CONFIRM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, company }),
-    });
-  } catch {
-    // Formspree already succeeded — confirmation email is best-effort.
+  const response = await fetch(CONFIRM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, company }),
+  });
+
+  if (!response.ok) {
+    console.warn(
+      'Confirmation email failed:',
+      response.status,
+      await response.text().catch(() => '')
+    );
   }
 }
 
@@ -23,7 +27,7 @@ export const useContactForm = (formId) => {
     if (!state.succeeded || !pendingRef.current) return;
     const payload = pendingRef.current;
     pendingRef.current = null;
-    sendConfirmation(payload);
+    sendConfirmation(payload).catch(() => {});
   }, [state.succeeded]);
 
   const handleFormSubmit = async (event) => {

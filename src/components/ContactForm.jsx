@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { LuUser } from 'react-icons/lu';
-import { FaRegEnvelope, FaRegStickyNote } from 'react-icons/fa';
-import PrimaryButton from '../ui/PrimaryButton';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { FaRegEnvelope, FaRegStickyNote } from 'react-icons/fa';
+import { LuUser } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 import { useContactForm } from '../hooks/useContactForm';
+import PrimaryButton from '../ui/PrimaryButton';
 import { trackEvent } from '../utils/analytics';
 
 const ContactForm = () => {
@@ -90,7 +90,7 @@ const ContactForm = () => {
             {state.submitting ? 'Submitting' : 'Mail Me!'}
           </PrimaryButton>
         </div>
-        <p className='text-xs text-primary/80'>
+        <p className='text-xs text-secondary/80'>
           We only use your details to reply. See our{' '}
           <Link to='/privacy' className='underline underline-offset-2'>
             Privacy Policy
@@ -112,10 +112,7 @@ const ContactForm = () => {
         {state.errors && (
           <p className='text-red-300 text-sm mt-2'>
             Something went wrong. Email{' '}
-            <a
-              className='underline'
-              href='mailto:contact@reactiveferdous.com'
-            >
+            <a className='underline' href='mailto:contact@reactiveferdous.com'>
               contact@reactiveferdous.com
             </a>{' '}
             instead.
