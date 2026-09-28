@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useForm } from '@formspree/react';
 
-const CONFIRM_ENDPOINT = '/.netlify/functions/send-confirmation';
+const CONFIRM_ENDPOINT = '/api/confirm-contact';
 
 async function sendConfirmation({ name, email, company }) {
   const response = await fetch(CONFIRM_ENDPOINT, {

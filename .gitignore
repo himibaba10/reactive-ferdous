@@ -27,3 +27,6 @@ dist-ssr
 
 # Assistant preference files — local only, never committed
 .commandcode/
+
+# Local Netlify folder
+.netlify
